@@ -1,0 +1,32 @@
+--- # <name>
+- hosts: linux
+  gather_facts: true
+
+  - name: Replicate SSH private keys
+  copy:
+    src: "/tmp/{{ item }}"
+    dest: "/etc/ssh/{{ item }}"
+    mode: 0600
+    backup: yes
+  with_items:
+    - ssh_host_dsa_key
+    - ssh_host_ecdsa_key
+    - ssh_host_ed25519_key
+    - ssh_host_rsa_key
+
+- name: Replicate SSH public keys
+  copy:
+    src: "/tmp/{{ item }}"
+    dest: "/etc/ssh/{{ item }}"
+    mode: 0644
+    backup: yes
+  with_items:
+    - ssh_host_dsa_key.pub
+    - ssh_host_ecdsa_key.pub
+    - ssh_host_ed25519_key.pub
+    - ssh_host_rsa_key.pub
+
+- name: Restart sshd
+  service:
+    name: sshd
+    state: reloaded

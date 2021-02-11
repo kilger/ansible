@@ -1,0 +1,19 @@
+---
+  - name: Fetch SSHd keys
+    hosts: linux
+    become: yes
+    tasks:
+      - name: ensure tmux is installed
+        fetch:
+          src: "/etc/ssh/{{ item }}"
+          dest: "/tmp/{{ item }}"
+          state: latest
+        with_items:
+          - ssh_host_dsa_key
+          - ssh_host_ecdsa_key
+          - ssh_host_ed25519_key
+          - ssh_host_rsa_key
+          - ssh_host_dsa_key.pub
+          - ssh_host_ecdsa_key.pub
+          - ssh_host_ed25519_key.pub
+          - ssh_host_rsa_key.pub

@@ -1,0 +1,12 @@
+---
+  - name: tmux
+    hosts: centos
+    become: yes
+    tasks:
+      - name: ensure tmux is installed
+        yum:
+          name: tmux
+          state: latest
+          
+#vi tmux.yml
+#run $ ansible-playbook tmux.yml

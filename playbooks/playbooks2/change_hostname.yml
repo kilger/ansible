@@ -1,0 +1,13 @@
+- hosts: all
+ gather_facts: yes
+ tasks:
+
+#change hostname
+ - name: Change current hostname to {{ inventory_hostname }}
+   win_hostname:
+     name: "{{ inventory_hostname }}"
+   register: winhostname
+
+ - name: Reboot {{ inventory_hostname }}
+   win_reboot:
+   when: winhostname.reboot_required

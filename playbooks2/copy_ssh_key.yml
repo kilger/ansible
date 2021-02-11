@@ -1,0 +1,16 @@
+--- # <name>
+  - hosts: linux
+    become: true
+    gather_facts: true
+
+
+  - name: copy ssh keys
+     authorized_key:
+     key: "{{ item }}"
+     user: "{{ username }}"
+     state: present
+     exclusive: False
+     with_file:
+  - linus_ssh_key.pub
+    #- user2_ssh_key.pub
+
