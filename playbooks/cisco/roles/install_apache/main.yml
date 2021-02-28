@@ -1,0 +1,11 @@
+---
+- name: import a tasks based on OS platform 
+  import_tasks: centos.yml 
+  when: ansible_distribution == 'CentOS' 
+- import_tasks: ubuntu.yml 
+  when: ansible_distribution == 'Ubuntu'
+
+  #https://github.com/PacktPublishing/Practical-Ansible-2/blob/master/Chapter%204/role-example1/roles/installapache/tasks/main.yml
+
+
+  

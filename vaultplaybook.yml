@@ -1,0 +1,15 @@
+---
+- name: A play that makes use of an Ansible Vault
+  hosts: frontends
+
+  vars_files:
+    - secret.yml
+
+  tasks:
+    - name: Tell me a secret
+      debug:
+        msg: "Your secret data is: {{ secretdata }}"
+
+        #https://github.com/PacktPublishing/Practical-Ansible-2/blob/master/Chapter%208/vaultplaybook.yml
+
+        
