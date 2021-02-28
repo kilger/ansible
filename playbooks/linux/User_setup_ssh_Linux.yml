@@ -1,0 +1,69 @@
+# To Run this Playbook Issue the command
+#from ansible2 advanced video video packt ssh.yml
+# 
+# ansible-playbook User_setup_ssh_Linux.yml 
+---
+- hosts: all
+  become: yes
+  gather_facts: yes
+  roles:
+    - { role: ssh }
+    
+    #roles
+    #ssh
+#files
+#ssh keys one per user
+skipped for now
+
+#tasks
+#main.yml
+---
+  - include_vars: users.yml
+
+  
+  - name: Create users with home directory
+    user: name={{ item.username }} shell=/bin/bash createhome=yes comment='Created by Ansible'
+    with_items: '{{users}}'
+
+#  - name: Setup | authorized key upload
+#    authorized_key: user={{ item.username }}
+#      key="{{ lookup('file', 'files/{{ item.username }}.pub') }}"
+#    when: '{{ item.use_sudo }} == True'
+#    with_items: '{{users}}'
+
+  - name: Sudoers | update sudoers file and validate
+    lineinfile: "dest=/etc/sudoers
+      insertafter=EOF
+      line='{{ item.username }} ALL=(ALL) NOPASSWD: ALL'
+      regexp='^{{ item.username }} .*'
+      state=present"
+    when: '{{ item.use_sudo }} == True'
+    with_items: '{{users}}'
+
+  - include_vars: deleteusers.yml
+
+  - name: Deleting The users
+    user: name={{ item.username }} state=absent remove=yes
+    with_items: '{{users}}'
+
+#vars
+#users.yml
+---
+users:
+
+  - username: peter #puppet user
+    use_sudo: yes
+
+  - username: sara #splunk user
+    use_sudo: yes
+
+  - username: arnolod #ansible user
+    use_sudo: yes
+
+  - username: linus #linux user
+    use_sudo: yes
+
+
+
+
+
