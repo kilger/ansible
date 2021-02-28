@@ -1,0 +1,11 @@
+---
+ansible_connection: network_cli
+ansible_network_os: ios
+ansible_become: True
+ansible_become_method: enable
+ansible_ssh_common_args: '-o ProxyCommand="ssh -W %h:%p -q bastion.example.com"'
+proxy_env:
+    http_proxy: http://proxy.example.com:8080
+
+
+    #https://github.com/PacktPublishing/Practical-Ansible-2/blob/master/Chapter%209/environment-example/group_vars/bastion_routers.yml

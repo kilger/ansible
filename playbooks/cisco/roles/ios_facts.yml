@@ -1,0 +1,9 @@
+---
+- hosts: routers
+  gather_facts: False
+  tasks:
+    - name: Gather IOS facts
+      ios_facts:
+        gather_subset: all
+
+#https://github.com/PacktPublishing/Practical-Ansible-2/blob/master/Chapter%209/connection-example/ios_facts.yml

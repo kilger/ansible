@@ -1,0 +1,8 @@
+---
+ansible_connection: network_cli
+ansible_network_os: ios
+ansible_become: True
+ansible_become_method: enable
+
+
+#https://github.com/PacktPublishing/Practical-Ansible-2/blob/master/Chapter%209/connection-example/group_vars/routers.yml

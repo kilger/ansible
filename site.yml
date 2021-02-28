@@ -1,0 +1,7 @@
+---
+- import_playbook: frontends-na.yml
+- import_playbook: appservers-emea.yml---
+
+
+
+#https://github.com/PacktPublishing/Practical-Ansible-2/blob/master/Chapter%202/site.yml
