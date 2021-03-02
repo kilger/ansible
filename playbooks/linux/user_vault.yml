@@ -1,0 +1,16 @@
+---
+- name: manage users
+  host: all
+  become: true
+  gather_facts: false
+  tasks:
+    - name: include
+      include_vars:
+        file: private.yml
+
+    - name: create user
+      user:
+        name: "{{ user_name }}"
+        password: "{{ user_password | password_hash('sha512','AS343') }}"
+        update_password: on_create
+      

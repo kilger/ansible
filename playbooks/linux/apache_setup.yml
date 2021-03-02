@@ -1,0 +1,60 @@
+---
+- name: apache
+  hosts: webservers
+    -name: restart_web
+     systemd:
+       name: "{{ web_servcie }}"
+       state: restarted
+
+  tasks:
+    - name: install apache
+      package:
+        name: "{{ web_package }}" 
+        state: latest
+    - name: ServerName
+      lineinfile:
+        path: "{{ web_path }}"
+        regexp: '^ServerName'
+        insertafter: '^#ServerName'
+        line: "ServerName {{ ansible_fqdn }}:80"
+      notifiy: restart_web
+    - name: DocRoot
+      file:
+        path: '/var/www/html'
+        mode: '3750'
+        owner: 'root'
+        group: "{{ web_group }}"
+    - name: index
+      copy: 
+        content: "welcome to {{ ansible_fqdn }} \n"
+        dest: 'var/www/html/index.html'
+        mode: '640'
+        group: "{{ web_group }}"
+    - name: firewalld centos
+      systemd:
+        name: firewalld
+        state: started
+        enabled: true
+      when: ansible_distribution == 'CentOS'
+    - name: open http centos
+      firewalld:
+        service: http
+        permanent: true
+        immediate: true
+        state: enabled
+      when: ansible_distribution == 'CentOS'
+
+    -name: ufw ubuntu
+     systemd:
+       name: ufw
+       state: started
+       enabled: true
+     when: ansible_distribution == 'Ubuntu'
+     ufw:
+       port: '{{ item }}'
+       rule: allow
+       state: enabled
+     when: ansible_distribution == 'Ubuntu'
+     loop:
+       - ssh
+       - http
