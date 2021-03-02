@@ -1,0 +1,13 @@
+---
+- name: remove users
+  host: all
+  gather_facts: false
+  tasks:
+    - name: remove users task
+      user:
+        name: "{{ item}}"
+        state: 'absent'
+        remove: true
+      loop:
+        - bob
+        - liz

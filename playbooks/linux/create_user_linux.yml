@@ -1,0 +1,5 @@
+---
+- name: create user
+  host: all
+  gather_facts: false
+  tasks:

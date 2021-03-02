@@ -1,0 +1,13 @@
+---
+- name: create users
+  host: all
+  gather_facts: false
+  tasks:
+    - name: create users w input task
+      user:
+        name: "{{ user_name }}"
+      
+
+
+# ansible-playbook -e "user_name=bob" create_user_w_input_linux.yml
+      

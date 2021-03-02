@@ -1,0 +1,14 @@
+---
+- name: Play to patch only CentOS systems
+  hosts: all
+  become: true
+
+  tasks: 
+  - name: Patch CentOS systems
+    yum:
+      name: httpd
+      state: latest
+    when: ansible_facts['distribution'] == "CentOS"
+
+    #https://github.com/PacktPublishing/Practical-Ansible-2/blob/master/Chapter%204/condition.yml
+    

@@ -1,0 +1,11 @@
+---
+- name: create users
+  host: all
+  gather_facts: false
+  tasks:
+    - name: create users task
+      user:
+        name: "{{ item}}"
+      loop:
+        - bob
+        - liz

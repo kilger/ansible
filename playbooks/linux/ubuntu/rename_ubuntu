@@ -1,0 +1,19 @@
+---
+- hosts: ubuntuserver20-04
+  become: yes
+  tasks:
+    - name: Update Hostname on Ubuntu
+        lineinfile:
+        path: /etc/hosts
+        state: present
+        regexp: '^%127.0.1.1 ubuntuserver20-04'
+        backup: yes #may need to remove
+        line: '%127.0.1.1 us01'
+   - name: Set Hostname
+       name: "{{ host_name }}"   
+     command: 'hostnamectl set-hostname us01'
+   - name: Reboot system
+     command: 'reboot'
+
+# ansible-playbook -e user_name=us007 rename_ubuntu.yml
+
