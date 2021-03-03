@@ -1,5 +1,6 @@
 --- # Test_Playbook.yml
-- hosts: all
+- name: test play in roles 
+  hosts: linux
   gather_facts: true
 
   tasks:
