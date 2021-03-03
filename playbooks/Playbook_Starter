@@ -1,7 +1,0 @@
----
-name: play_name
-hosts: add_hosts
-roles:
-  - add roles
-  - php
-  - mariadb
