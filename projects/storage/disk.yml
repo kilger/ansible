@@ -1,0 +1,62 @@
+---
+- name: play1
+  hosts: all
+  become: true
+  gather_facts: false
+  tasks:
+    - name: part1
+      parted:
+        devcie: /dev/sdb
+        part_start: 0%
+        part_end: 50%
+        number: 1
+        state: present
+
+    - name: part2
+      parted:
+        devcie: /dev/sdb
+        part_start: 50%
+        part_end: 100%
+        number: 2
+        state: present
+        flags: [ lvm ]
+
+    - name: vg
+      lvg:
+        lv: lv1
+        vg: vg1
+        size: 100%FREE
+        shrink: false
+
+      - name: sdb1
+        filesystem:
+          fstype: xfs
+          dev: /dev/sdb1
+          
+      - name: lv
+        filesystem:
+          fstype: xfs
+          dev: /dev/vg1/1v1
+
+      - name: dir1
+        file:
+          path: "{{ item }}"
+          state: directory
+        loop:
+          - /data
+          - /data/sales
+          - /date/marketing
+
+      - name: mount sales
+        mount:
+          path: /data/sales
+          src: /dev/sdb1
+          fstype: xfs
+          state: mounted
+
+      - name: mount mkt
+        mount:
+          path: /data/marketing
+          src: /dev/vg1/1v1
+          fstype: xfs
+          state: mounted
