@@ -1,0 +1,21 @@
+---
+- name: play
+  hosts: all
+  become: true
+  gather_facts: false
+  tasks:
+    -name: cron
+     cron: 
+       name: test cron entry
+       hour: '11'
+       minute: '25'
+       job: 'cat /etc/passwd > /tmp/file1'
+       user: root
+       crone_file: mycron
+
+  - name: at entry
+    at:
+      command: 'find /usr/share/doc -name "*.pdf" -exec cp {} /tmp/ \; "'
+      count: 1
+      units: minutes
+      unique: true
