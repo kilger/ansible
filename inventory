@@ -9,8 +9,8 @@ localhost ansible_connection=local
 #CentOSSetup.lab.local
 fedoraw32
 #puppet02
-us01
-us02
+us-01
+us-02
 #awx01
 #syslog-ng
 #ubuntuserver
