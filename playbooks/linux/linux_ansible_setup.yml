@@ -1,0 +1,7 @@
+---
+name: initial linux setup
+hosts: linux
+roles:
+  - ssh
+  - php
+  - mariadb
