@@ -1,14 +1,14 @@
 [local]
 localhost ansible_connection=local
-127.0.0.1 ansible_connection=local
+#127.0.0.1 ansible_connection=local
 
-[cisco_ios]
-192.168.86.100 R1
+#[cisco_ios]
+#192.168.86.100 R1
 
 [linux]
-CentOSSetup.lab.local
+#CentOSSetup.lab.local
 fedoraw32
-puppet02
+#puppet02
 us01
 us02
 #awx01
@@ -16,28 +16,31 @@ us02
 #ubuntuserver
 
 [centos]
-CentOSSetup.lab.local
-puppet02
+#CentOSSetup.lab.local
+#puppet02
 #awx01
 #syslog-ng
 
 [debian]
 fedoraw32
-us01
-us02
+ud-00
+ud-01
+us-01
+us-02
 #ubuntuserver
 
 [web_servers]
+us-01
 
-[linux:vars]
+#[linux:vars]
 #become=true
 
 
-[windows]
-DESKTOP-VDGCPNL
-fs04
-fs05
-s1601
+#[windows]
+#DESKTOP-VDGCPNL
+#fs04
+#fs05
+#s1601
 #win10-04
 #dc02
 #brix
@@ -45,17 +48,17 @@ s1601
 #m900
 #tablet
 
-[win_clients]
-DESKTOP-VDGCPNL
+#[win_clients]
+#DESKTOP-VDGCPNL
 #brix
 #couplescave
 #win10-04
-tablet
-m93
-m900
+#tablet
+#m93
+#m900
 
-[win_servers]
-fs04
-fs05
-s1601
+#[win_servers]
+#fs04
+#fs05
+#s1601
 #dc02m93
