@@ -1,6 +1,6 @@
 - hosts: all
- gather_facts: yes
- tasks:
+  gather_facts: yes
+  tasks:
 
 #change hostname
  - name: Change current hostname to {{ inventory_hostname }}
