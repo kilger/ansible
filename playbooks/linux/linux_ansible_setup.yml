@@ -3,5 +3,5 @@
   hosts: linux
   roles:
     - ssh
-    - php
-    - mariadb
+#    - php
+#    - mariadb
