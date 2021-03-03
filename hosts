@@ -1,42 +1,65 @@
+# This is the default ansible 'hosts' file.
+# 9/25/2020
+# It should live in /etc/ansible/hosts
+
+
 [local]
 localhost ansible_connection=local
 
 [linux]
-puppet02
+CentOSSetup.lab.local
 fedoraw32
+puppet02
+us01
+us02
 #awx01
 #syslog-ng
 #ubuntuserver
 
-
 [centos]
+CentOSSetup.lab.local
 puppet02
 #awx01
 #syslog-ng
 
 [debian]
 fedoraw32
+us01
+us02
 #ubuntuserver
+
+[linux:vars]
+#become=true
+
 
 [windows]
 DESKTOP-VDGCPNL
 fs04
 fs05
+s1601
 #win10-04
 #dc02
+#brix
+#m93
+#m900
+#tablet
 
+[win_clients]
+DESKTOP-VDGCPNL
+#brix
+#couplescave
+#win10-04
+tablet
+m93
+m900
 
 [win_servers]
 fs04
 fs05
-#dc02
+s1601
+#dc02m93
 
-[win_clients]
-DESKTOP-VDGCPNL
-#win10-04
 
-[linux:vars]
-become=true
 
 [windows:vars]
 ansible_connection=winrm
@@ -46,7 +69,6 @@ ansible_port=5985
 ansible_winrm_scheme=http
 ansible_winrm_server_cert_validation=ignore
 
-
 [win_servers:vars]
 ansible_connection=winrm
 ansible_user=administrator
@@ -54,4 +76,4 @@ ansible_password=P@ssw0rd
 ansible_port=5985
 ansible_winrm_scheme=http
 ansible_winrm_server_cert_validation=ignore
-# end hosts for labcomputers
+# end 
