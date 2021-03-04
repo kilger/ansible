@@ -1,0 +1,14 @@
+---
+ - debug:
+     msg: "I cjk am connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
+
+ - name: Change current hostname to {{ inventory_hostname }}
+   win_hostname:
+     name: "{{ inventory_hostname }}"
+   register: winhostname
+
+ - name: Reboot {{ inventory_hostname }}
+   win_reboot:
+   when: winhostname.reboot_required
+
+... 
