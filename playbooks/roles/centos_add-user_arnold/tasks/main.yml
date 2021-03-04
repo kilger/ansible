@@ -1,0 +1,6 @@
+---
+- name: create arnold user user task
+  user:
+    name: 'arnold'
+    state: 'present'
+    remove: false
