@@ -9,6 +9,7 @@ localhost ansible_connection=local
 #CentOSSetup.lab.local
 fedoraw32
 #puppet02
+rh8-00
 us-01
 us-02
 #awx01
@@ -31,6 +32,7 @@ us-02
 
 [web_servers]
 us-01
+rh8-00
 
 #[linux:vars]
 #become=true
