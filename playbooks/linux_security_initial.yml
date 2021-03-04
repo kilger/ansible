@@ -1,6 +1,5 @@
 ---
-- name: Harden linux
-  hosts: rh8-00
+- hosts: rh8-00
   roles:
     - linux_ssh_harden
     ...
