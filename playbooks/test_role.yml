@@ -1,6 +1,7 @@
 ---
 - name: Testing of Roles
   hosts: rh8-00
+  become: true
   roles:
     - test_role
     - centos_add-user_arnold
