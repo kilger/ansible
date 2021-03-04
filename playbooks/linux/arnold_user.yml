@@ -20,6 +20,6 @@
       state: present
       manage_dir: true
       key: "{{ lookup( 'file', '/home/linus/.ssh/id_rsa.pub') }}"
-
+...
 # ansible-playbook arnold_user.yml
 # ssh arnold@whatever
