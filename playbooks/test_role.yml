@@ -3,5 +3,5 @@
   hosts: rh8-00
   roles:
     - test_role
-  
+    - centos_tmux_install
 ...
