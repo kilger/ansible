@@ -3,8 +3,8 @@
      msg: "I  am connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
     
  - name: Perform full patching
-     package:
-       name: '*'
-       state: latest
+  package:
+    name: '*'
+    state: latest
 
 ...
