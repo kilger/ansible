@@ -3,5 +3,6 @@
   hosts: rh8-00
   roles:
     - test_role
-    - centos_linus-add-wheel_setup
+    - centos_add-user_arnold
+#    - centos_linus-add-wheel_setup
 ...
