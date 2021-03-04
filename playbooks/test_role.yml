@@ -1,6 +1,8 @@
 ---
-- hosts: rh8-00
+- name: play_name
+  hosts: add_hosts
   roles:
-    - test_role
-
+    - add roles
+    - php
+    - mariadb
 ...
