@@ -1,0 +1,3 @@
+---
+arnold ALL=(root) NOPASSWD: ALL
+linus  ALL=(root) NOPASSWD: ALL
