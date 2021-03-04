@@ -1,0 +1,7 @@
+---
+- name: play
+  hosts: rh8-00
+  roles:
+    - test_role
+
+...
