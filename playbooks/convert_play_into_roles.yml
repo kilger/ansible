@@ -1,5 +1,7 @@
 --- # Test_Playbook.yml
 - hosts: rh8-00
+  roles:
+    - test_role
 #  gather_facts: true
 #  tasks:
 #    - debug:
