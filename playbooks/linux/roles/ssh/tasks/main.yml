@@ -1,7 +1,4 @@
 ---
-- hosts: all
-  become: true
-  tasks:
   - name: install ms rpm key
     rpm_key:
       key: https://packages.microsoft.com/keys/microsoft.asc
@@ -32,5 +29,8 @@
     yum:
       name: code
       state: latest
-
+...
 # tasks file for /home/linuks/linux/roles/ssh
+#- hosts: all
+#  become: true
+#  tasks:
