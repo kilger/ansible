@@ -4,7 +4,7 @@
     
  - name: Perform full patching
    package:
-   name: '*'
+     name: '*'
      state: latest
 
 ...
