@@ -1,4 +1,4 @@
 --- # Test role
 - debug:
-    msg: "C:\Ansible\ansible\playbooks\linux\ssh2 I am connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
+    msg: "I am connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
 ... 
