@@ -6,8 +6,17 @@
 #- name: initial linux setup
 #  hosts: linux
   roles:
+<<<<<<< HEAD
      - ssh2
 #    - ssh2
+=======
+<<<<<<< HEAD
+#    - ssh
+=======
+    - ssh3
+>>>>>>> d32236f7b9fd99ba88cc7a6794a89baa18096228
+    - ssh2
+>>>>>>> 4449c8741b37448775778385ce0b359a36ce714e
 #    - test_connectivity
 #    - php
 #    - mariadb
