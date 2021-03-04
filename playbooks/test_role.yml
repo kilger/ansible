@@ -4,6 +4,6 @@
   become: true
   roles:
     - test_role
-    - centos_add-user_arnold
+    -   
 #    - centos_linus-add-wheel_setup
 ...

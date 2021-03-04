@@ -1,0 +1,21 @@
+---
+mkdir /var/log/journal
+
+
+
+2. Before journald can write the journal to this directory, you have to set ownership. Type 
+$ chown root:systemd-journal /var/log/journal
+$ chmod 2755/var/log/journal
+
+
+/etc/systemd/journald.conf
+Storage=persistent
+
+3. Next, you can either 
+$ reboot 
+(restarting the systemd-journald service is not enough) or use the 
+$ killall -USR1 systemd-journald 
+4. The Systemd journal is now persistent across reboots. If you want to see the log messages since the last reboot, use 
+$ journalctl -b
+
+#Making the journald Journal Permanent in sn
