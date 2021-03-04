@@ -7,7 +7,8 @@
 #  hosts: linux
   roles:
     - ssh
-    - test_connectivity
+    - ssh2
+#    - test_connectivity
 #    - php
 #    - mariadb
 
