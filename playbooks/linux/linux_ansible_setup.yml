@@ -6,7 +6,7 @@
 #- name: initial linux setup
 #  hosts: linux
   roles:
-#    - ssh
+    - ssh3
     - ssh2
 #    - test_connectivity
 #    - php
