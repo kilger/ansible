@@ -1,6 +1,7 @@
 ---
 - name: tmux install
   hosts: rh8-00
+  become: true
   roles:
     - add tmux
   
