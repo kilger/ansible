@@ -2,13 +2,14 @@
 #- debug:
 #    msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
 
+
 - name: deploy devopss account
   host: centos
   become: true
   tasks:
     - name: create account
       user:
-        name: devops
+      name: devops
 
     - name: sudo access
       copy:
