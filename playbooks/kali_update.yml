@@ -1,0 +1,19 @@
+---
+- name: play_name
+  hosts: add_hosts
+  roles:
+    - add roles
+    - php
+    - mariadb
+
+https://alphacybersecurity.tech/how-to-secure-your-kali-linux-machine/
+    # apt-get update & apt-get upgrade
+
+    #/etc/ssh directory and move those keys into that folder. We can do that with the command “mkdir old_keys” to make the folder. Next, run the command “mv ssh_host_* /etc/ssh/old_keys”. This will move the keys we want to change into the folder we just created. Finally, if you run “ls old_keys, you can find the keys there.
+
+    #Now that the keys have been successfully moved, we can move forward to the next step. Now we need to create new keys. In the terminal, run the command “dpkg-reconfigure openssh-server”. If you get a warning message or a message about a static unit, don’t worry about those.
+
+
+Adding an Unprivileged User
+give super user access so we can use Root privileges when needed.
+“usermod -a -G sudo username“.
