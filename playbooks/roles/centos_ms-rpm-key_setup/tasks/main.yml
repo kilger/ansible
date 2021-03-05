@@ -3,10 +3,10 @@
     msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
 - name: install ms rpm key
   rpm_key:
-   key: https://packages.microsoft.com/keys/microsoft.asc
+    key: https://packages.microsoft.com/keys/microsoft.asc
     state: present
 
 
 
-    
+
 # ... add dots once tested
