@@ -1,0 +1,5 @@
+---
+- name: add date and time to bash history
+  hosts: centos
+  roles:
+    - linux_bash-histtimeformat_setup
