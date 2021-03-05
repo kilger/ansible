@@ -1,0 +1,17 @@
+---
+- debug:
+    msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
+
+- name: Ansible Insert multiple lines using blockinfile
+  blockinfile:
+    dest: /etc/yum.repos.d/vscode.repo
+    block: |
+      [code]
+      name=Visual Studio Code
+      baseurl=https://packages.microsoft.com/yumrepos/vscode
+      enabled=1
+      gpgcheck=1
+      gpgkey=https://packages.microsoft.com/keys/microsoft.asc
+    backup: yes
+
+# ... add dots once tested
