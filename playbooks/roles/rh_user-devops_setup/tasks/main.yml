@@ -21,6 +21,4 @@
         user: devops
         state: present
         manage_dirs: true
-        key: "{{ lookup( 'file', '/home/linus/.ssh/id_rsa.pub') }}""
-
-# ... add dots once tested
+        key: "{{ lookup( 'file', '/home/linus/.ssh/id_rsa.pub') }}"
