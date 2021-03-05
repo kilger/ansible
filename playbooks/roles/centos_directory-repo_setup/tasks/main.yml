@@ -7,4 +7,4 @@
     path: /etc/yum.repos.d
     state: directory
     mode: '0755'
-# ... add dots once tested
+... 

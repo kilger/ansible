@@ -8,6 +8,4 @@
     - centos_blockfile_setup
     - centos_vscode_setup
 
-
-
-    # ... add dots once tested
+... 
