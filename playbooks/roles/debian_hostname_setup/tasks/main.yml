@@ -1,0 +1,22 @@
+---
+- debug:
+    msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
+
+- hosts: ubuntuserver20-04
+  become: yes
+  name: Update Hostname on Ubuntu
+    lineinfile:
+    path: /etc/hosts
+    state: present
+    regexp: '^%127.0.1.1 ubuntuserver20-04'
+    backup: yes #may need to remove
+    line: '%127.0.1.1 us01'
+
+- name: Set Hostname
+  command: 'hostnamectl set-hostname us01'
+   
+- name: Reboot system
+  command: 'reboot'
+
+
+# ... add dots once tested
