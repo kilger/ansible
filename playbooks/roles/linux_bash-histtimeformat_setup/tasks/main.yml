@@ -1,10 +1,18 @@
 ---
+- name: add line for date code
+  become: true
+  lineinfile:
+   path:  /etc/bashrc
+  # regexp: '^ServerName'
+  # insertafter: '#ServerName'
+   line: "HISTTIMEFORMAT="%F %T"
+
 #add to .bashrc
 
 #export HISTTIMEFORMAT='%F %T'
 #HISTTIMEFORMAT=500  # 500 is default
 
-echo 'export HISTTIMEFORMAT="%F %T "' >> ~/.bashrc
+#echo 'export HISTTIMEFORMAT="%F %T "' >> ~/.bashrc
 
 
 
@@ -17,10 +25,10 @@ echo 'export HISTTIMEFORMAT="%F %T "' >> ~/.bashrc
 # export HISTSIZE=0
 
 # Show A Timestamp (Date / Time) When Each Command Was Executed
-echo 'export HISTTIMEFORMAT="%F %T "' >> ~/.bashrc
+# echo 'export HISTTIMEFORMAT="%F %T "' >> ~/.bashrc
 # export HISTTIMEFORMAT="%F %I:%M:%S %p "
 #
-#- name: Ensure virtualenv is sourced from the .bashrc
+# - name: Ensure virtualenv is sourced from the .bashrc
 #  blockinfile:
 #    dest: "{{ ansible_env.HOME }}/.bashrc"
 #    block: |
@@ -33,7 +41,7 @@ echo 'export HISTTIMEFORMAT="%F %T "' >> ~/.bashrc
 
 
 #    https://www.cherryshoetech.com/2019/08/ansible-accessing-bashrc-changes-in.html
-#- block:
+# - block:
 #  - name: export bridged ip address in .bashrc
 #    blockinfile:
 #      dest: '/home/{{user}}/.bashrc'
