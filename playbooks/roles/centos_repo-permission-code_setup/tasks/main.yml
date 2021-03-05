@@ -3,6 +3,7 @@
     msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
 
 - name: Change file ownership, group and permissions
+  become: true
   file:
     path: /etc/yum.repos.d/vscode.repo
     owner: linus
