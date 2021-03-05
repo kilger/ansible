@@ -1,0 +1,8 @@
+---
+$ sudo apt-get install fail2ban
+OR
+$ sudo yum install fail2ban
+Edit the config file as per your needs:
+$ sudo vi /etc/fail2ban/jail.conf 
+Restart the service:
+$ sudo systemctl restart fail2ban.service
