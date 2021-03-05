@@ -6,20 +6,20 @@
 - name: deploy devopss account
   host: centos
   become: true
-  tasks:
-    - name: create account
-      user:
-      name: devops
+  #tasks:
+- name: create account
+    user:
+    name: devops
 
-    - name: sudo access
-      copy:
-        dest: /etc/sudoers.d/devops
-        content: 'deveops ALL=(ALL) NOPASSWD: ALL'
-        validate: /usr/sbin/visudo -cf %S
+- name: sudo access
+    copy:
+    dest: /etc/sudoers.d/devops
+    content: 'deveops ALL=(ALL) NOPASSWD: ALL'
+    validate: /usr/sbin/visudo -cf %S
     
-    - name: ssh key
-      authorized_key:
-        user: devops
-        state: present
-        manage_dirs: true
-        key: "{{ lookup( 'file', '/home/linus/.ssh/id_rsa.pub') }}"
+- name: ssh key
+  authorized_key:
+    user: devops
+    state: present
+    manage_dirs: true
+    key: "{{ lookup( 'file', '/home/linus/.ssh/id_rsa.pub') }}"
