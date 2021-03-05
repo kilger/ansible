@@ -1,0 +1,14 @@
+---
+#add to .bashrc
+export HISTTIMEFORMAT='%F %T'
+
+
+HISTTIMEFORMAT=500  # 500 is default
+
+# Anti-forensics 
+# Don’t save file
+# export HISTFILE=/dev/null
+# Don’t save history 
+# export HISTFILESIZE=0
+# Don’t remember commands 
+# export HISTSIZE=0
