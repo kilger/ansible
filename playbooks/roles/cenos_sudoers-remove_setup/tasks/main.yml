@@ -1,0 +1,5 @@
+---
+add this to sudoers
+linus ALL=(ALL) sudoedit /etc/ssh/sshd_config
+
+linus  ALL=(ALL) /usr/bin/systemctl status sshd, /usr/bin/systemctlrestart 
