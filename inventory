@@ -24,11 +24,15 @@ puppet02
 
 [debian]
 fedoraw32
+kal-00
 ud-00
 ud-01
 us-01
 us-02
 #ubuntuserver
+
+[kali]
+kal-00
 
 [web_servers]
 us-01
