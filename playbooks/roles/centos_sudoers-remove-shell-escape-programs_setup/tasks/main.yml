@@ -1,0 +1,11 @@
+---
+remove from sudoers
+emacs
+less
+view
+more
+Preventing users from using other dangerous programs
+cat
+cut
+awk
+sed
