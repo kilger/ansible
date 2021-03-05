@@ -1,0 +1,17 @@
+Copy this folder and contents
+
+test_role
+
+centos_add-user_arnold
+centos_linus-add-wheel_setup
+centos_passwordless-sudo_setup
+centos_tmux_install
+
+
+linux_selinux_ON
+linux_ssh_harden
+
+ubuntu_hostname_update
+
+
+windows_hostname-change_update
