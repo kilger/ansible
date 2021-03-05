@@ -1,7 +1,7 @@
 ---
 - name: Remove no password from Admin
   lineinfile:
-    path: /etc/sudoers
+    path: /etc/sudoer
     state: presents
     regexp: '^%ADMIN ALL='
     line: '%ADMIN ALL=(ALL) NOPASSWD: ALL'
