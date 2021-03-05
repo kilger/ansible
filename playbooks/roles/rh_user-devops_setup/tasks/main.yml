@@ -23,4 +23,4 @@
         manage_dirs: true
         key: "{{ lookup( 'file', '/home/linus/.ssh/id_rsa.pub'
 
-# ... add dots once tested rh_user-devops_setup
+# ... add dots once tested
