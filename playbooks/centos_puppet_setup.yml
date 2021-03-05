@@ -1,0 +1,9 @@
+---
+- name: Puppet
+  hosts: centos
+  roles:
+    - centos_user-puppetier_setup
+
+
+
+# ... add dots once tested
