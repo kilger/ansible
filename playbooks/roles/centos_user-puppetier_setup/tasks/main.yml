@@ -5,6 +5,7 @@
 - name: Add the user 'puppetier' with a bash shell, appending the group 'admins' to the user's group
   user:
     name: puppetier
+    become: true
     state: present
     password: kilger001
     shell: /bin/bash
