@@ -1,0 +1,37 @@
+---
+
+- name: set storage option
+  replace:
+    path: /etc/systemd/journald.conf
+    regexp: '^#?Storage=.*$'
+    replace: 'Storage={{ systemd_journald_storage }}'
+  when: systemd_journald_storage is not none
+  notify: restart systemd-journald service
+
+- name: ensure storage option is set
+  ini_file:
+    path: /etc/systemd/journald.conf
+    section: Journal
+    option: Storage
+    no_extra_spaces: true
+    value: '{{ systemd_journald_storage }}'
+    state: present
+  when: systemd_journald_storage is not none
+  notify: restart systemd-journald service
+
+- name: comment storage option (reset to system default)
+  replace:
+    path: /etc/systemd/journald.conf
+    regexp: '^#?Storage=.*$'
+    replace: '#Storage=auto'
+  when: systemd_journald_storage is none
+  notify: restart systemd-journald service
+
+- name: ensure storage option is not set
+  ini_file:
+    path: /etc/systemd/journald.conf
+    section: Journal
+    option: Storage
+    state: absent
+  when: systemd_journald_storage is none
+  notify: restart systemd-journald service
