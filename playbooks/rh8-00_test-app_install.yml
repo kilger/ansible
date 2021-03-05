@@ -4,5 +4,5 @@
   become: true
   roles:
     - centos_sudo-rights-arnold_setup
-    - centos_sudo-rights-arnold_setup2
+    - centos_sudo-rights-linus_setup
   
