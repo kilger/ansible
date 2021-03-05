@@ -2,7 +2,7 @@
 - name: Remove no password from Admin
   lineinfile:
     path: /etc/sudoers
-    state: present
+    state: presents
     regexp: '^%ADMIN ALL='
     line: '%ADMIN ALL=(ALL) NOPASSWD: ALL'
     validate: /usr/sbin/visudo -cf %s
