@@ -1,0 +1,14 @@
+---
+- debug:
+    msg: "I cjk am connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
+
+- name: Add sudo rights for deployment user.
+  lineinfile:
+    dest: /etc/sudoers
+    regexp: '^arnold'
+    line: 'arnold ALL=(ALL) NOPASSWD: ALL'
+    state: present
+    validate: 'visudo -cf %s'
+
+
+... 
