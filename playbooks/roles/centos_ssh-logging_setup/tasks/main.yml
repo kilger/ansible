@@ -1,0 +1,11 @@
+---
+
+add file syslog.conf by adding in /etc/syslog.conf file
+*.* /var/log/sshd/sshd.log
+
+vi sshd_config
+#LogLevel INFO
+to 
+LogLevel INFO
+
+PermitRootLogin no
