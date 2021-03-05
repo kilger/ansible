@@ -1,0 +1,7 @@
+---
+- name: add devops user
+  hosts: centos
+  roles:
+    - rh_user-devops_setup
+ 
+# ... put dots once tested

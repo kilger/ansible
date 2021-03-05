@@ -1,9 +1,12 @@
 ---
 #add to .bashrc
-export HISTTIMEFORMAT='%F %T'
+
+#export HISTTIMEFORMAT='%F %T'
+#HISTTIMEFORMAT=500  # 500 is default
+
+echo 'export HISTTIMEFORMAT="%F %T "' >> ~/.bashrc
 
 
-HISTTIMEFORMAT=500  # 500 is default
 
 # Anti-forensics 
 # Don’t save file

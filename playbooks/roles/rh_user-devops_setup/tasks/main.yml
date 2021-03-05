@@ -1,0 +1,26 @@
+---
+- debug:
+    msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
+
+- name: deploy devops account
+  host: centos
+  become: true
+  tasks:
+    - name: create account
+      user:
+        name: devops
+
+    - name: sudo access
+      copy:
+        dest: /etc/sudoers.d/devops
+        content: 'deveops ALL=(ALL) NOPASSWD: ALL'
+        validate: /usr/sbin/visudo -cf %S
+    
+    - name: ssh key
+      authorized_key:
+        user: devops
+        state: present
+        manage_dirs: true
+        key: "{{ lookup( 'file', '/home/linus/.ssh/id_rsa.pub'
+
+# ... add dots once tested rh_user-devops_setup
