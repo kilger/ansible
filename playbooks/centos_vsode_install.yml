@@ -1,0 +1,14 @@
+---
+- name: install vscode
+  hosts: centos
+  roles:
+    - add roles
+    - centos_ms-rpm-key_setup
+    - centos_directory-repo_setup
+    - centos_repo-permission-code_setup
+    - centos_blockfile_setup
+    - centos_vscode_setup
+
+
+
+    # ... add dots once tested
