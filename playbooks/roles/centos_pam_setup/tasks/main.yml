@@ -1,0 +1,7 @@
+---
+- name: Set PAM Configuration To Recored Failed Login Attempts
+  lineinfile:
+    path:  /etc/pam.d/system-auth
+    line: auth required pam_tally.so no_magic_root
+account required pam_tally.so deny=3 no_magic_root lock_time=180
+    create: yes
