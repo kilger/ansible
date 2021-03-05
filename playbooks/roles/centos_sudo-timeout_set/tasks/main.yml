@@ -1,0 +1,8 @@
+---
+- name: Set sudo timeout to zero
+  lineinfile:
+    path: /etc/sudoers
+    state: present
+    regexp: '^%Defaults timestamp_timeout = '
+    line: '%Defaults timestamp_timeout = 0'
+    validate: /usr/sbin/visudo -cf %s

@@ -1,0 +1,3 @@
+---
+Use a Shell Script to Customize a Message Viewed Upon Login
+vi /etc/profile.d/message.sh

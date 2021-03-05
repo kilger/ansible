@@ -1,0 +1,13 @@
+---
+diable direct root login
+pam_securetty can restrict login to "secure" terminals
+secure terminals listed in /etc/securetty
+empty file means root cannot login anywhere
+*non-existent file means root can log in everywhere
+pam module doesn't effect ssh 
+Disable root login through sshd /etc/ssh/sshd_config: PermitRootLogin no
+
+$ sudo vim /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+to
+root:x:0:0:root:/root:/sbin/nologin

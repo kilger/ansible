@@ -1,0 +1,6 @@
+---
+- name: Disabling Root Access via TTY
+  lineinfile:
+    path: /etc/securetty
+    state: present
+    line: ' /dev/null'

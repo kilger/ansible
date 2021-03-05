@@ -1,0 +1,12 @@
+---
+- name: Disable USB/firewire/thunderbolt devices
+  lineinfile:
+    path: /etc/modprobe.d/disable-usb-storage.conf
+    line: install usb-storage /bin/true
+    create: yes
+
+- name: disable firewire and thunderbolt modules:
+  lineinfile:
+    path: /etc/modprobe.d/firewire.conf
+    line: blacklist firewire-core
+    create: yes

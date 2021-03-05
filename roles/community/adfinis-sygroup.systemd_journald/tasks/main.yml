@@ -1,0 +1,6 @@
+---
+
+- import_tasks: configuration.yml
+  tags:
+    - 'role::systemd_journald'
+    - 'role::systemd_journald:config'
