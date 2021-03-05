@@ -5,4 +5,4 @@
   roles:
     - centos_sudo-rights-arnold_setup
     - centos_sudo-rights-linus_setup
-  
+    - centos_user-splunker_setup  
