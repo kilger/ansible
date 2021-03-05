@@ -12,3 +12,39 @@ HISTTIMEFORMAT=500  # 500 is default
 # export HISTFILESIZE=0
 # Don’t remember commands 
 # export HISTSIZE=0
+
+# Show A Timestamp (Date / Time) When Each Command Was Executed
+echo 'export HISTTIMEFORMAT="%F %T "' >> ~/.bashrc
+# export HISTTIMEFORMAT="%F %I:%M:%S %p "
+#
+#- name: Ensure virtualenv is sourced from the .bashrc
+#  blockinfile:
+#    dest: "{{ ansible_env.HOME }}/.bashrc"
+#    block: |
+#      export WORKON_HOME=~/TestEnvs
+#      source /usr/local/bin/virtualenvwrapper.sh
+#      workon my_virtual_env
+#    marker: '# {mark} ANSIBLE MANAGED BLOCK - virtualenv'
+#    insertbefore: BOF
+#    create: yes 
+
+
+#    https://www.cherryshoetech.com/2019/08/ansible-accessing-bashrc-changes-in.html
+#- block:
+#  - name: export bridged ip address in .bashrc
+#    blockinfile:
+#      dest: '/home/{{user}}/.bashrc'
+#      block: |
+#       export BRIDGED_IP_ADDRESS=$(hostname -I | awk '{print $1}')
+#      marker: '# {mark} ANSIBLE MANAGED BLOCK - export BRIDGED_IP_ADDRESS'
+#      owner: '{{user}}'
+#      group: 'wheel'
+#      create: yes
+#  - name: command that needs access to $BRIDGED_IP_ADDRESS
+#    command: '<command>'
+#    args:
+#      chdir: '{{project_path}}'
+#    # The -l indicates to start shell as login shell with an environment similar to a real login
+#    become_method: su
+#    become_user: '{{user}}'
+#    become_flags: '-l'

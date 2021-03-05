@@ -1,7 +1,7 @@
 ---
-- name: tmux install
+- name: test install rh8-00
   hosts: rh8-00
   become: true
   roles:
-    - centos_tmux_install
+    - centos_sudo-rights-arnold_setup
   
