@@ -8,6 +8,7 @@ localhost ansible_connection=local
 [linux]
 #CentOSSetup.lab.local
 fedoraw32
+kal-00
 puppet02
 rh8-00
 us-01
