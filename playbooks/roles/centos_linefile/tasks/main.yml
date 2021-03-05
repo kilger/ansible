@@ -1,0 +1,7 @@
+---
+- name: add line after
+  lineinfile::
+   path:  firewalld
+   regexp: '^ServerName'
+   insertafter: '#ServerName'
+   line: "ServerName {{ ansible_fqdn }}:80"
