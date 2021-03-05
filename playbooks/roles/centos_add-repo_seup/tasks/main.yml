@@ -1,0 +1,5 @@
+--- 
+- name: Add EPEl repository to centos
+  package:
+    name: “yum-plugin-priorities epel-release”
+    state: latest
