@@ -5,7 +5,7 @@
    path:  /etc/bashrc
   # regexp: '^ServerName'
   # insertafter: '#ServerName'
-   line: HISTTIMEFORMAT="%F %T"
+   line: cjk  #HISTTIMEFORMAT="%F %T"
 
 #add to .bashrc
 
