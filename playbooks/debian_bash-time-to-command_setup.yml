@@ -1,0 +1,6 @@
+---
+- name: add date and time to bash history
+  hosts: debian
+  roles:
+    - debian_bash-histtimeformat_setup
+# ... add dots once tested
