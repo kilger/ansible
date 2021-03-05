@@ -5,11 +5,11 @@
    path:  /etc/bashrc
   # regexp: '^ServerName'
   # insertafter: '#ServerName'
-   line: "HISTTIMEFORMAT="%F %T"""
+   line: HISTTIMEFORMAT="%F %T"
 
 #add to .bashrc
 
-#export HISTTIMEFORMAT='%F %T'
+# export HISTTIMEFORMAT='%F %T'
 #HISTTIMEFORMAT=500  # 500 is default
 
 #echo 'export HISTTIMEFORMAT="%F %T "' >> ~/.bashrc
