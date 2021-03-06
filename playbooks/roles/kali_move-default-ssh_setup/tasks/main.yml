@@ -4,7 +4,7 @@
 
 - name: copy default keys
  # become: true
-  ansible.builtin.shell: mv /etc/ssh/ssh_host_* /etc/ssh/old_keys
+  ansible.builtin.shell: mv /etc/ssh/ssh_host_* /etc/ssh/old_keys/
 
 
 # ... add dots once tested
