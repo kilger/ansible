@@ -5,6 +5,7 @@
   roles:
 #    - kali_tools_setup
     - debian_git_setup
+    - centos_sudo-passwdless_setup
     - kali_move-default-ssh_setup
     # .... add dots once tested
 
