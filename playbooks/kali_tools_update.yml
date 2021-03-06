@@ -1,0 +1,10 @@
+---
+- name: kali tools update
+  hosts: kali
+  roles:
+    - kali_tools_setup
+
+
+    # .... add dots once tested
+
+    
