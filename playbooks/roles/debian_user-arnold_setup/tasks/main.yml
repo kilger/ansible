@@ -1,5 +1,36 @@
 ---
 - debug:
     msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
+---
+- hosts: debian
+  remote_user: arnold
+  become: yes
+  become_method: sudo
+  gather_facts: true
+  connection: ssh
 
+#- name: Add group "nixadmins" to remote server
+#  group:
+#    name: nixadmins
+#    gid: 2010
+#    state: present
+
+#- name: Add user "sysadmin" to remote server
+#  user:
+#    name: sysadmin
+#    comment: "Privileged User"
+#    uid: 2001
+#    group: nixadmins
+#    groups: office,warehouse
+#    append: yes
+#    shell: /bin/bash
+#    generate_ssh_key: yes
+#    ssh_key_bits: 2048
+#    ssh_key_file: .ssh/id_rsa
+
+#- name: Force user "arnold" to change the password
+#  command: 
+#      chage -d 0 arnold
+
+# ... dots when tested
 # ... add dots once tested
