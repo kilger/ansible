@@ -2,7 +2,7 @@
 - debug:
     msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
 
-  name: ensure git is installed
+- name: ensure git is installed
   hosts: debian #ubuntuserver20-04
   become: yes
   apt:
