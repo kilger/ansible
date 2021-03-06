@@ -3,6 +3,8 @@
     msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
 
 - name: Add the user 'linus' with a bash shell, appending the group 'admins' to the user's group
+  hosts: debian
+  become: true
   user:
     name: linus
     state: present
@@ -11,5 +13,9 @@
     groups: admin
     append: yes
 
+#remote_user: linus
+#become_method: sudo
+#gather_facts: true
+#connection: ssh
 
 # ... add dots once tested
