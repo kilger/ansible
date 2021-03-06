@@ -10,5 +10,8 @@
       ansible.builtin.debug:
         var: ansible_facts
 
+  roles:
+    - test_role
+
 ... 
 #end

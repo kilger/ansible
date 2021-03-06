@@ -1,8 +1,6 @@
 ---
-- name: create arnold user user task
-  user:
-    name: 'arnold'
-    state: 'present'
-    remove: false
+- debug:
+    msg: "Role connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
 
-... 
+
+# ... dots when tested
