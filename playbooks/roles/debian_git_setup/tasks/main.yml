@@ -6,6 +6,7 @@
 - hosts: debian #ubuntuserver20-04
   become: yes
     package: apt
+    name: git
     state: present
 
 # ... add dots once tested
