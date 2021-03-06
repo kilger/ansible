@@ -36,20 +36,20 @@
 
 #tasks:
 - name: Ansible check directory.
-stat:
-path: /etc/ssh/old_keys #/project/devops/jboss
-register: my_folder
+  stat:
+  path: /etc/ssh/old_keys #/project/devops/jboss
+  register: my_folder
 
 - name: "echo if directory already existed"
-debug:
-msg: "the old_keys directory is already existed"
-when: my_folder.stat.exists
+  debug:
+  msg: "the old_keys directory is already existed"
+  when: my_folder.stat.exists
 
 - name: "Ansible Create directory if not exists"
-file:
-path: /etc/ssh/old_keys #/project/devops/jboss
-state: directory
-mode: 0755
-group: root
-owner: root
-when: my_folder.stat.exists == false
+  file:
+  path: /etc/ssh/old_keys #/project/devops/jboss
+  state: directory
+  mode: 0755
+  group: root
+  owner: root
+  when: my_folder.stat.exists == false
