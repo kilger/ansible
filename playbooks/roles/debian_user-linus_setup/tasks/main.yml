@@ -4,6 +4,7 @@
 
 - name: Add the user #'linus' with a bash shell, appending the group 'admins' to the user's group
 #  hosts: debian
+  become_method: sudo
   become: true
   user:
     name: linus
