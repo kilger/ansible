@@ -5,8 +5,8 @@
 - name: ensure git is installed
 - hosts: debian #ubuntuserver20-04
   become: yes
-    apt:
-      pkg:
-      - apt
+  apt:
+    name: git
+    state: present
     
 # ... add dots once tested
