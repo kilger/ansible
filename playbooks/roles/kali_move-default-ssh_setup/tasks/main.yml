@@ -2,13 +2,23 @@
 - debug:
     msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
 
-- name: Copy file 
-  ansible.builtin.copy:
-    src: /etc/ssh/ssh_host_* #/srv/myfiles/foo.conf
-    dest: /etc/ssh/old_keys #/etc/foo.conf
+#- name: Copy file 
+#  ansible.builtin.copy:
+#    src: /etc/ssh/ssh_host_* #/srv/myfiles/foo.conf
+#    dest: /etc/ssh/old_keys #/etc/foo.conf
 
 
+- name: copy file between locations on the remote host
+  copy:
+    src: /etc/ssh/ssh_host_*
+    remote_src: true
+    dest: /etc/ssh/old_keys
 
+#- name: copy file between locations on the remote host
+#  copy:
+#    src: $HOME/test_file
+#    remote_src: true
+#    dest: $HOME/test_file2
 
 #- name: copy default keys
  # become: true
