@@ -36,9 +36,9 @@
 
 #tasks:
 - name: Ansible check directory.
-  stat:
-  path: /etc/ssh/old_keys #/project/devops/jboss
-  register: my_folder
+    stat:
+    path: /etc/ssh/old_keys #/project/devops/jboss
+    register: my_folder
 
 - name: "echo if directory already existed"
   debug:
