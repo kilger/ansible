@@ -3,8 +3,8 @@
   hosts: debian
   become: true
   roles:
-    - kali_tools_setup
-
+#    - kali_tools_setup
+    - debian_git_setup
 
     # .... add dots once tested
 
