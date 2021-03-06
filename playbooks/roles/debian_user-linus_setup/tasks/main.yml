@@ -2,7 +2,7 @@
 - debug:
     msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
 
-- name: Add the user 'linus' with a bash shell, appending the group 'admins' to the user's group
+- name: Add the user #'linus' with a bash shell, appending the group 'admins' to the user's group
   hosts: debian
   become: true
   user:
