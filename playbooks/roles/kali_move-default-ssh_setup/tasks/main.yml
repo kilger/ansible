@@ -2,7 +2,8 @@
 - debug:
     msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
 
-mv ssh_host_* /etc/ssh/old_keys
+- name: copy default keys
+    ansible.builtin.shell: mv ssh_host_* /etc/ssh/old_keys
 
 
 # ... add dots once tested

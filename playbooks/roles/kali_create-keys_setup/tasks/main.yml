@@ -3,6 +3,9 @@
     msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
 
 
+
+
+
 dpkg-reconfigure openssh-server
 
 #- name: Execute the command in remote shell; stdout goes to the specified file on the remote
