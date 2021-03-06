@@ -3,6 +3,7 @@
     msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
 
 - name: copy default keys
+  become: true
   ansible.builtin.shell: mv ssh_host_* /etc/ssh/old_keys
 
 
