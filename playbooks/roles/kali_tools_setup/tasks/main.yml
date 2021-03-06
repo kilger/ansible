@@ -1,0 +1,20 @@
+---
+- debug:
+    msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
+
+- name: Install Your Favorite Hacking Tools
+  apt:
+    pkg:
+    - foo
+    - maltego 
+    - metasploit-framework 
+    - burpsuite 
+    - wireshark 
+    - aircrack-ng 
+    - hydra 
+    - nmap 
+    - beef-xss 
+    - nikto
+
+
+# ... add dots once tested
