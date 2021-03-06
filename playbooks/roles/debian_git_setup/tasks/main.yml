@@ -9,7 +9,9 @@
     name:
       - git
     state: latest
-
+  dependencies:
+    - role: debian_python3_setup
+    
 # requires python3 $ sudo apt install -y python-is-python3
 
 
