@@ -1,6 +1,6 @@
 ---
 - name: kali tools update
-  hosts: kali
+  hosts: debian
   become: true
   roles:
     - kali_tools_setup
