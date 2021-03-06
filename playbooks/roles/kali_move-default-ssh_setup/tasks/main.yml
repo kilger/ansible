@@ -2,6 +2,14 @@
 - debug:
     msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
 
+
+- name: Create a directory if it does not exist
+  ansible.builtin.file:
+    path: /etc/ssh/old_keys #/etc/some_directory
+    state: directory
+    mode: '0755'
+
+
 #- name: Copy file 
 #  ansible.builtin.copy:
 #    src: /etc/ssh/ssh_host_* #/srv/myfiles/foo.conf
@@ -35,21 +43,21 @@
 #gather_facts: no
 
 #tasks:
-- name: Ansible check directory.
-  stat:
-    path: /etc/ssh/old_keys #/project/devops/jboss
-  register: my_folder
+#- name: Ansible check directory.
+#  stat:
+#    path: /etc/ssh/old_keys #/project/devops/jboss
+#  register: my_folder
 
-- name: "echo if directory already existed"
-  debug:
-    msg: "the old_keys directory is already existed"
-  when: my_folder.stat.exists
+#- name: "echo if directory already existed"
+#  debug:
+#    msg: "the old_keys directory is already existed"
+#  when: my_folder.stat.exists
 
-- name: "Ansible Create directory if not exists"
-  file:
-    path: /etc/ssh/old_keys #/project/devops/jboss
-  state: directory
-  mode: 0755
-  group: root
-  owner: root
-  when: my_folder.stat.exists == false
+#- name: "Ansible Create directory if not exists"
+#  file:
+#    path: /etc/ssh/old_keys #/project/devops/jboss
+#  state: directory
+#  mode: 0755
+#  group: root
+#  owner: root
+#  when: my_folder.stat.exists == false
