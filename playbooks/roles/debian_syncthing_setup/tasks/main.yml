@@ -1,0 +1,41 @@
+---
+- debug:
+    msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
+
+apt-get update && apt-get install apt-transport-https -V
+
+curl -s https://syncthing.net/release-key.txt | sudo apt-key add -
+
+echo 'deb https://apt.syncthing.net/ syncthing stable' >> /etc/apt/sources.list
+
+echo 'Package: *
+Pin: origin apt.syncthing.net
+Pin-Priority: 1001' > /etc/apt/preferences.d/syncthing
+
+apt-get update && apt-get install syncthing
+
+step two
+systemctl --user start syncthing.service
+
+ssh -L 9999:127.0.0.1:8384 -p 22 user@YOUR-VPS-IP-ADDRESS
+
+nano /etc/systemd/system/syncthing.service
+[Unit]
+Description=Syncthing - Open Source Continuous File Synchronization
+Documentation=man:syncthing(1)
+
+[Service]
+ExecStart=/usr/bin/syncthing -no-browser -no-restart -logflags=0
+Restart=on-failure
+SuccessExitStatus=3 4
+RestartForceExitStatus=3 4
+
+[Install]
+WantedBy=default.target
+
+
+
+systemctl --user enable syncthing
+Created symlink /root/.config/systemd/user/default.target.wants/syncthing.service → /usr/lib/systemd/user/syncthing.service.
+
+# ... add dots once tested

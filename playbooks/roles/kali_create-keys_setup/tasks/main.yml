@@ -5,5 +5,8 @@
 
 dpkg-reconfigure openssh-server
 
-
+#- name: Execute the command in remote shell; stdout goes to the specified file on the remote
+#  ansible.builtin.shell: somescript.sh >> somelog.txt
+ansible.builtin.shell: dpkg-reconfigure openssh-server
+#sudo dpkg-reconfigure kali-grant-root
 # ... add dots once tested
