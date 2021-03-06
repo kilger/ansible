@@ -1,6 +1,7 @@
 ---
 - name: kali tools update
   hosts: kali
+  become: true
   roles:
     - kali_tools_setup
 
