@@ -1,0 +1,21 @@
+---
+- debug:
+    msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
+
+- name: change hosts file
+  blockinfile:
+    dest: /etc/hosts 
+    block: |
+      127.0.0.1 Puppet02 Puppet02.lab.local Puppet024 Puppet02.lab.loca4
+      ::1 Puppet02 Puppet02.lab.local Puppet026 Puppet02.lab.local66
+    backup: yes
+
+- name: change hostname file
+  blockinfile:
+    dest: /etc/hostname
+    block: |
+      puppet02.lab.locall
+    backup: yes
+
+
+# ... add dots once tested
