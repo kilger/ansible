@@ -12,6 +12,7 @@
     backup: yes
 
 - name: change hostname file
+  become: true
   blockinfile:
     dest: /etc/hostname
     block: |
