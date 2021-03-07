@@ -2,7 +2,8 @@
 - name: Puppet
   hosts: centos
   roles:
-    - centos_user-puppetier_setup
+#    - centos_user-puppetier_setup
+    - centos8_setup_setup.yml
 
 
 
