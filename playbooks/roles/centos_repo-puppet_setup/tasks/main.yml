@@ -4,7 +4,7 @@
 
 - name: Ansible Insert multiple lines using blockinfile
   blockinfile:
-    dest: /etc/yum.repos.d/puppet6.repo
+    dest: /etc/yum.repos.d/puppet5.repo
     block: |
       [puppetlabs-products]
       name=Puppet Labs Products El 8
