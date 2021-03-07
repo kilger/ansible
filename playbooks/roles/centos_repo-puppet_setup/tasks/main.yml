@@ -2,16 +2,10 @@
 - debug:
     msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
 
-
 - name: Ansible Insert multiple lines using blockinfile
   blockinfile:
     dest: /etc/yum.repos.d/puppet6.repo
     block: |
-      These lines are added by blockinfile module
-      Check out the marker lines
-    backup: yes
-# ... add dots once tested
-
       [puppetlabs-products]
       name=Puppet Labs Products El 8
       name=Puppet Labs Products El 7
@@ -21,4 +15,7 @@
       enabled=1
       gpgcheck=1
       priority=1 # Add this part
-#end cjk
+    backup: yes
+# ... add dots once tested
+
+
