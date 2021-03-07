@@ -5,9 +5,20 @@
 
 - name: Ansible Insert multiple lines using blockinfile
   blockinfile:
-    dest: /etc/yum.repos.d/puppet5.repo
+    dest: /etc/yum.repos.d/puppet6.repo
     block: |
       These lines are added by blockinfile module
       Check out the marker lines
     backup: yes
 # ... add dots once tested
+
+      [puppetlabs-products]
+      name=Puppet Labs Products El 8
+      name=Puppet Labs Products El 7
+      name=Puppet Labs Products El 6 - $basearch
+      baseurl=http://yum.puppetlabs.com/el/6/products/$basearch
+      gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs
+      enabled=1
+      gpgcheck=1
+      priority=1 # Add this part
+#end cjk
