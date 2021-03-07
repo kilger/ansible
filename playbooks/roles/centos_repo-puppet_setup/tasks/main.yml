@@ -1,0 +1,13 @@
+---
+- debug:
+    msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
+
+
+- name: Ansible Insert multiple lines using blockinfile
+  blockinfile:
+    dest: /etc/yum.repos.d/puppet5.repo
+    block: |
+      These lines are added by blockinfile module
+      Check out the marker lines
+    backup: yes
+# ... add dots once tested
