@@ -1,13 +1,10 @@
 ---
-- name: play_name
-  hosts: centosmaster or whatever
+- name: configure server
+  hosts: puppet-02
 
-
-  
   roles:
-    - add roles
-    - php
-    - mariadb
+    - centos8_setup_setup.yml
+
 
 
     # .... add dots once tested
