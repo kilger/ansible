@@ -31,10 +31,10 @@
 #    - centos_user-puppetier_setup
     - centos8_setup_setup.yml
 
-- name: Debug output from the device
-  debug:
-    var: hn_change
-  when: debug is defined
+#- name: Debug output from the device
+ # debug:
+ #   var: hn_change
+ # when: debug is defined
 
 #- name: change hosts file
 #  become: true  localhost.localdomain
