@@ -6,7 +6,7 @@
   become: true
   lineinfile:
     path: /etc/hostname
-    regexp: '^127.0.0.1 '
+    regexp: '^127.0.0.1'
     line: 127.0.0.1 Puppet02 Puppet02.lab.local Puppet024 Puppet02.lab.loca4
 
 #- name: change hosts file
