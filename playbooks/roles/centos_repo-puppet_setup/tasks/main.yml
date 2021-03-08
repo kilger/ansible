@@ -16,6 +16,6 @@
       gpgcheck=1
       priority=1 # Add this part
     backup: yes
-# ... add dots once tested
+... add dots once tested
 
 
