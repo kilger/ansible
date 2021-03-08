@@ -5,12 +5,12 @@
 - name: Ensure hostname is set puppet02
   become: true
   lineinfile:
-    path: /etc/hostname
+    path: /etc/hosts
     regexp: '^127.0.0.1'
     line: 127.0.0.1 Puppet02 Puppet02.lab.local Puppet024 Puppet02.lab.loca4
 
 #- name: change hosts file
-#  become: true
+#  become: true  localhost.localdomain
 #  blockinfile:
 #    dest: /etc/hosts 
 #    block: |
@@ -18,13 +18,24 @@
 #      ::1 Puppet02 Puppet02.lab.local Puppet026 Puppet02.lab.local66
 #    backup: yes
 
-- name: change hostname file
+- name: Ensure hosts is set puppet02
   become: true
-  blockinfile:
-    dest: /etc/hostname
-    block: |
-      puppet02.lab.locall
-    backup: yes
+  lineinfile:
+    path: /etc/hosts
+    regexp: '^localhost.localdomain'
+    line: puppet02.lab.local
+
+
+
+
+
+#- name: change hostname file
+#  become: true
+#  blockinfile:
+#    dest: /etc/hostname
+#    block: |
+#      puppet02.lab.locall
+#    backup: yes
 
 
 # ... add dots once tested
