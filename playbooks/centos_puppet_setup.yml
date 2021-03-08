@@ -6,7 +6,7 @@
 #    msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
 
 - name: Ensure hostname is set puppet02
-  register: hn_change
+ # register: hn_change
   become: true
   lineinfile:
     path: /etc/hosts
