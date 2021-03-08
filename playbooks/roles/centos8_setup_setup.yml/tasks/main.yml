@@ -2,14 +2,20 @@
 - debug:
     msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
 
-- name: change hosts file
-  become: true
-  blockinfile:
-    dest: /etc/hosts 
-    block: |
-      127.0.0.1 Puppet02 Puppet02.lab.local Puppet024 Puppet02.lab.loca4
-      ::1 Puppet02 Puppet02.lab.local Puppet026 Puppet02.lab.local66
-    backup: yes
+- name: Ensure hostname is set puppet02
+  lineinfile:
+    path: /etc/hostname
+    regexp: '^127.0.0.1 '
+    line: 127.0.0.1 Puppet02 Puppet02.lab.local Puppet024 Puppet02.lab.loca4
+
+#- name: change hosts file
+#  become: true
+#  blockinfile:
+#    dest: /etc/hosts 
+#    block: |
+#      127.0.0.1 Puppet02 Puppet02.lab.local Puppet024 Puppet02.lab.loca4
+#      ::1 Puppet02 Puppet02.lab.local Puppet026 Puppet02.lab.local66
+#    backup: yes
 
 - name: change hostname file
   become: true
