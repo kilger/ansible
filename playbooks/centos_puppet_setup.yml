@@ -1,10 +1,49 @@
 ---
 - name: Puppet
   hosts: centos
+
+---
+- debug:
+    msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
+
+- name: Ensure hostname is set puppet02
+  register: hn_change
+  become: true
+  lineinfile:
+    path: /etc/hosts
+    regexp: '^127.0.0.1'
+    line: 127.0.0.1 puppet02 puppet02.lab.local puppet024 puppet02.lab.loca4
+
+- name: Ensure hostname is set puppet02
+  become: true
+  lineinfile:
+    path: /etc/hosts
+    regexp: '^::1 '
+    line: ::1         puppet02 puppet02.lab.local puppet026 puppet026.lab.local6
+
+- name: Ensure hosts is set puppet02
+  become: true
+  lineinfile:
+    path: /etc/hosts
+    regexp: '^localhost.localdomain'
+    line: puppet02.lab.local
+
   roles:
 #    - centos_user-puppetier_setup
     - centos8_setup_setup.yml
 
+- name: Debug output from the device
+  debug:
+    var: hn_change
+  when: debug is defined
 
+#- name: change hosts file
+#  become: true  localhost.localdomain
+#  blockinfile:
+#    dest: /etc/hosts 
+#    block: |
+#      127.0.0.1 Puppet02 Puppet02.lab.local Puppet024 Puppet02.lab.loca4
+#      ::1 Puppet02 Puppet02.lab.local Puppet026 Puppet02.lab.local66
+#    backup: yes
 
 # ... add dots once tested
