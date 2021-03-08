@@ -1,6 +1,6 @@
 ---
-- name: Puppet 
-  hosts: centos
+#- name: Puppet 
+#  hosts: centos
 
 #- debug:
 #    msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
