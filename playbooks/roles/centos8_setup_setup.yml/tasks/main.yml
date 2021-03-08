@@ -24,6 +24,10 @@
 #      127.0.0.1 Puppet02 Puppet02.lab.local Puppet024 Puppet02.lab.loca4
 #      ::1 Puppet02 Puppet02.lab.local Puppet026 Puppet02.lab.local66
 #    backup: yes
+vars_prompt: 
+- name: hostname
+    prompt: "hostname?"
+    private: no
 
 - name: Ensure hosts is set puppet02
   become: true
@@ -32,6 +36,12 @@
     regexp: '^localhost.localdomain'
     line: puppet02.lab.local
 
+ 
+- debug:
+    msg: 'Computers name: {{ hostname }}'
+
+
+$ ansible-playbook -vvv crunchify.yml -e "hostname='puppet03' "
 
 
 
