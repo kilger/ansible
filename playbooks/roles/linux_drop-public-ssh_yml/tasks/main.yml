@@ -1,0 +1,13 @@
+---
+- debug:
+    msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
+
+- name: Drop ssh from the public zone
+  firewalld:
+    zone: public
+    service: ssh
+    state: disabled
+    immediate: yes
+    permanent: yes
+
+# ... add dots once tested
