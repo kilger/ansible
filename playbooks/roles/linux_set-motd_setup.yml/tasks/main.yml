@@ -1,0 +1,14 @@
+---
+- debug:
+    msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
+
+- name: Set a message of the day
+  copy:
+    dest: /etc/motd
+    src: etc/motd
+    owner: root
+    group: root
+    mode: 0644
+
+    
+# ... add dots once tested

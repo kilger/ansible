@@ -1,0 +1,13 @@
+---
+- debug:
+    msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
+
+- name: ensure python is latest
+#  hosts: debian
+  become: true
+  ansible.builtin.package:
+    name:
+      - python3
+    state: latest
+    
+# ... add dots once tested

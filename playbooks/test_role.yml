@@ -1,9 +1,10 @@
 ---
 - name: Testing of Roles
-  hosts: rh8-00
+  hosts: puppet02
   become: true
   roles:
-    - test_role
-    -   
+#    - test_role
+    - centos_repo-puppet_setup
 #    - centos_linus-add-wheel_setup
 ...
+

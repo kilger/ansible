@@ -1,0 +1,21 @@
+---
+- debug:
+    msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
+
+- name: Ansible Insert multiple lines using blockinfile
+  blockinfile:
+    dest: /etc/yum.repos.d/puppet5.repo
+    block: |
+      [puppetlabs-products]
+      name=Puppet Labs Products El 8
+      name=Puppet Labs Products El 7
+      name=Puppet Labs Products El 6 - $basearch
+      baseurl=http://yum.puppetlabs.com/el/6/products/$basearch
+      gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs
+      enabled=1
+      gpgcheck=1
+      priority=1 # Add this part
+    backup: yes
+...
+
+

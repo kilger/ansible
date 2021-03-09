@@ -1,0 +1,12 @@
+---
+- name: configure server
+  hosts: puppet-02
+
+  roles:
+    - centos8_setup_setup.yml
+
+
+
+    # .... add dots once tested
+
+    

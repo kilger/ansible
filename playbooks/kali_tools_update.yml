@@ -4,8 +4,10 @@
   become: true
   roles:
 #    - kali_tools_setup
-    - debian_git_setup
-    - kali_move-default-ssh_setup
+#    - debian_git_setup
+    - debian_python3_setup
+#    - centos_sudo-passwdless_setup
+#    - kali_move-default-ssh_setup
     # .... add dots once tested
 
     

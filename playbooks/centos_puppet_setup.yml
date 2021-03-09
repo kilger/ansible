@@ -1,9 +1,17 @@
 ---
-- name: Puppet
-  hosts: centos
-  roles:
-    - centos_user-puppetier_setup
+- debug:
+    msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
 
 
 
-# ... add dots once tested
+
+#- name: change hosts file
+#  become: true  localhost.localdomain
+#  blockinfile:
+#    dest: /etc/hosts 
+#    block: |
+#      127.0.0.1 Puppet02 Puppet02.lab.local Puppet024 Puppet02.lab.loca4
+#      ::1 Puppet02 Puppet02.lab.local Puppet026 Puppet02.lab.local66
+#    backup: yes
+
+
