@@ -1,0 +1,12 @@
+---
+- debug:
+    msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
+
+
+- name: Create a directory if it does not exist
+  ansible.builtin.file:
+    path: /etc/ssh/default_keys
+    state: directory
+#    mode: '0755'
+# ...
+# ... add dots once tested
