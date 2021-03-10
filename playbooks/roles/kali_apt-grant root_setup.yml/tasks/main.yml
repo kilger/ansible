@@ -15,5 +15,7 @@
   become: true
   ansible.builtin.shell: dpkg-reconfigure kali-grant-root
 
-
+- name: generate new ssh key
+  ansible.builtin.shell: dpkg-reconfigure openssh-server
+  
 # ... add dots once tested
