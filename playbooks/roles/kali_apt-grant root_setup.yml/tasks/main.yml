@@ -2,13 +2,13 @@
 - debug:
     msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
 
-- name: Install apt kali-grant-root package
-  become: true
-  apt: 
-    name: kali-grant-root
-    state: latest
-    update_cache: yes
-    cache_valid_time: 3600
+#- name: Install apt kali-grant-root package
+#  become: true
+#  apt: 
+#    name: kali-grant-root
+#    state: latest
+#    update_cache: yes
+#    cache_valid_time: 3600
 
 
 - name: dpkg reconfigure command
@@ -17,5 +17,5 @@
 
 - name: generate new ssh key
   ansible.builtin.shell: dpkg-reconfigure openssh-server
-  
+
 # ... add dots once tested
