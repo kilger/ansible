@@ -1,7 +1,4 @@
 ---
-- debug:
-    msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
-
 - name: Install apt cockpit package
   become: true
   apt: 
@@ -9,5 +6,10 @@
     state: latest
     update_cache: yes
     cache_valid_time: 3600
-# ...
+...
+
+
 # ... add dots once tested
+
+# fails on kali-00 3/10/2021
+# success us-01 3/10/2021
