@@ -9,13 +9,10 @@
     update_cache: yes
     cache_valid_time: 3600
 
-- name: commit with comment
-  cli_config:
+
+- name: dpkg reconfigure command
   become: true
-    config: dpkg-reconfigure kali-grant-root
-    commit_comment: this is a test
-
-
+  ansible.builtin.shell: dpkg-reconfigure kali-grant-root
 
 
 # ... add dots once tested
