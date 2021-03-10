@@ -10,14 +10,12 @@
     state: directory
     mode: '0755'
 
-- name: stat of default_keys
-  stat: path=/etc/ssh/default_keys 
-  register: default_keys_stat
-
-- name: Move default keys to /etc/ssh/default_keys
-  command: mv /etc/ssh/ssh_config  /etc/ssh/default_keys 
-  when: default_keys_stat.stat.exists
-
+#- name: state of default_keys
+#  stat: path=/etc/ssh/default_keys 
+#  register: default_keys_stat
+#- name: Move default keys to /etc/ssh/default_keys
+#  command: mv /etc/ssh/ssh_config  /etc/ssh/default_keys 
+#  when: default_keys_stat.stat.exists
 
 #- name: Move default keys to /etc/ssh/default_keys
 #  become: true
@@ -26,22 +24,22 @@
 #- name: Remove default keys
 #  file: path=/etc/ssh/ssh_host state=absent
 
-- name: Create ssh_config directory if it does not exist
+- name: Copy file 
   become: true
+  ansible.builtin.copy:
+    src: /etc/ssh/ssh_host_*            
+    dest: /etc/ssh/default_keys               
+
+- name: Remove file (delete file)
   ansible.builtin.file:
-    path: /etc/ssh/ssh_config
-    state: directory
-    mode: '0755'
+    path: /etc/ssh/ssh_config/*.*
+    state: absent
 
 - name: generate new ssh key
   become: true
   ansible.builtin.shell: dpkg-reconfigure openssh-server
 
-#- name: Copy file 
-#  become: true
-#  ansible.builtin.copy:
-#    src: /etc/ssh/ssh_host_*           #/srv/myfiles/foo.conf
-#e    dest: /etc/ssh/default_keys              #/etc/foo.conf
+
 
 #- name: mk directory /old_keys
  #   ansible.builtin.shell: mkdir /etc/ssh/old_keys
