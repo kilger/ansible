@@ -10,9 +10,28 @@
     state: directory
     mode: '0755'
 
+- name: stat of default_keys
+  stat: path=/etc/ssh/default_keys 
+  register: default_keys_stat
+
 - name: Move default keys to /etc/ssh/default_keys
+  command: mv /etc/ssh/ssh_config  /etc/ssh/default_keys 
+  when: default_keys_stat.stat.exists
+
+
+#- name: Move default keys to /etc/ssh/default_keys
+#  become: true
+#  command: mv /etc/ssh/ssh_host  /etc/ssh/default_keys
+
+#- name: Remove default keys
+#  file: path=/etc/ssh/ssh_host state=absent
+
+- name: Create ssh_config directory if it does not exist
   become: true
-  command: mv /etc/ssh/ssh_host  /etc/ssh/default_keys
+  ansible.builtin.file:
+    path: /etc/ssh/ssh_config
+    state: directory
+    mode: '0755'
 
 - name: generate new ssh key
   become: true
