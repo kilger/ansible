@@ -1,0 +1,22 @@
+---
+- debug:
+    msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
+
+---
+- name: Install apt kali-grant-root package
+  apt: 
+    name: kali-grant-root
+    state: latest
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: commit with comment
+  cli_config:
+  become: true
+    config: dpkg-reconfigure kali-grant-root
+    commit_comment: this is a test
+
+
+
+
+# ... add dots once tested
