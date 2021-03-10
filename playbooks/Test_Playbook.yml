@@ -6,12 +6,13 @@
     - debug:
         msg: "I am connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
 
-    - name: Show facts available on the system
-      ansible.builtin.debug:
-        var: ansible_facts
+#    - name: Show facts available on the system
+#      ansible.builtin.debug:
+#        var: ansible_facts
 
   roles:
-    - test_role
+    - debian_apt_cockpit_setup.yml
+    - test_role.yml
 
 ... 
 #end
