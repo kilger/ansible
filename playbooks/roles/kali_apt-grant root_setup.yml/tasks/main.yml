@@ -11,11 +11,12 @@
 #    cache_valid_time: 3600
 
 
-- name: dpkg reconfigure command
-  become: true
-  ansible.builtin.shell: dpkg-reconfigure kali-grant-root
+#- name: dpkg reconfigure command
+#  become: true
+#  ansible.builtin.shell: dpkg-reconfigure kali-grant-root
 
 - name: generate new ssh key
+  become: true
   ansible.builtin.shell: dpkg-reconfigure openssh-server
 
 # ... add dots once tested
