@@ -1,6 +1,6 @@
 ---
-- debug:
-    msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
+#- debug:
+#    msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
 
 #- name: Install apt kali-grant-root package
 #  become: true

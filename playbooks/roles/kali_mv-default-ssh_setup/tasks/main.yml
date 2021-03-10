@@ -10,13 +10,18 @@
     mode: '0755'
 
 - name: Move foo to bar
+  become: true
   command: mv /etc/ssh/ssh_host_*.*  /etc/ssh/default_keys
+
+- name: generate new ssh key
+  become: true
+  ansible.builtin.shell: dpkg-reconfigure openssh-server
 
 #- name: Copy file 
 #  become: true
 #  ansible.builtin.copy:
 #    src: /etc/ssh/ssh_host_*           #/srv/myfiles/foo.conf
-#    dest: /etc/ssh/default_keys              #/etc/foo.conf
+#e    dest: /etc/ssh/default_keys              #/etc/foo.conf
 
 #- name: mk directory /old_keys
  #   ansible.builtin.shell: mkdir /etc/ssh/old_keys
