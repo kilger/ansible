@@ -12,7 +12,7 @@
 
 - name: Move default keys to /etc/ssh/default_keys
   become: true
-  command: mv "/etc/ssh/ssh_host_*.*"  /etc/ssh/default_keys
+  command: mv /etc/ssh/ssh_host  /etc/ssh/default_keys
 
 - name: generate new ssh key
   become: true
