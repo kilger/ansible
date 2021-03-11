@@ -19,7 +19,7 @@
 
 - name: Move default keys to /etc/ssh/default_keys
   become: true
-  command: mv /etc/ssh/ssh_host_*  /etc/ssh/default_keys
+  command: mv /etc/ssh/ssh_host_rsa_key  /etc/ssh/default_keys
 
 #- name: Remove default keys
 #  file: path=/etc/ssh/ssh_host state=absent
