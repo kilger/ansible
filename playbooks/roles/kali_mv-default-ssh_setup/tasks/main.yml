@@ -27,10 +27,11 @@
 - name: Copy file 
   become: true
   ansible.builtin.copy:
-    src: /etc/ssh/ssh_host_*       #ssh_host_rsa_key.pub ssh_host_rsa_key
+    src: /etc/ssh/ssh_host*       #ssh_host_rsa_key.pub ssh_host_rsa_key
     dest: /etc/ssh/default_keys               
 
 - name: Remove file (delete file)
+  become: true
   ansible.builtin.file:
     path: /etc/ssh/ssh_host_*
     state: absent
