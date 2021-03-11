@@ -17,9 +17,9 @@
 #  command: mv /etc/ssh/ssh_config  /etc/ssh/default_keys 
 #  when: default_keys_stat.stat.exists
 
-#- name: Move default keys to /etc/ssh/default_keys
-#  become: true
-#  command: mv /etc/ssh/ssh_host  /etc/ssh/default_keys
+- name: Move default keys to /etc/ssh/default_keys
+  become: true
+  command: mv /etc/ssh/ssh_host_*  /etc/ssh/default_keys
 
 #- name: Remove default keys
 #  file: path=/etc/ssh/ssh_host state=absent
@@ -30,8 +30,8 @@
 #    src: /etc/ssh/ssh_host_*           #ssh_host_rsa_key.pub ssh_host_rsa_key
 #    dest: /etc/ssh/default_keys               
 
-- name: Move  ssh_host* to default_keys
-  command: cp -r /etc/ssh/ssh_host_* /etc/ssh/default_keys  
+#- name: Move  ssh_host* to default_keys
+#  command: cp -r /etc/ssh/ssh_host_* /etc/ssh/default_keys  
 
 
 - name: Remove file (delete file)
