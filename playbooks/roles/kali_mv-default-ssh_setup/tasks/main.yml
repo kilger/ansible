@@ -31,7 +31,7 @@
 #    dest: /etc/ssh/default_keys               
 
 - name: Move  ssh_host* to default_keys
-  command: cp -r //etc/ssh/ssh_host_* /etc/ssh/default_keys  
+  command: cp -r /etc/ssh/ssh_host_* /etc/ssh/default_keys  
 
 
 - name: Remove file (delete file)
