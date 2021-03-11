@@ -24,11 +24,15 @@
 #- name: Remove default keys
 #  file: path=/etc/ssh/ssh_host state=absent
 
-- name: Copy ssh_host* to default_keys 
-  become: true
-  ansible.builtin.copy:
-    src: /etc/ssh/ssh_host_*           #ssh_host_rsa_key.pub ssh_host_rsa_key
-    dest: /etc/ssh/default_keys               
+#- name: Copy ssh_host* to default_keys #this coping local to remote?
+#  become: true
+#  ansible.builtin.copy:
+#    src: /etc/ssh/ssh_host_*           #ssh_host_rsa_key.pub ssh_host_rsa_key
+#    dest: /etc/ssh/default_keys               
+
+- name: Move  ssh_host* to default_keys
+  command: cp -r //etc/ssh/ssh_host_* /etc/ssh/default_keys  
+
 
 - name: Remove file (delete file)
   become: true
