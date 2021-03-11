@@ -1,0 +1,11 @@
+---
+#- debug:
+#    msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
+
+- name: Remove file (delete file)
+  become: true
+  ansible.builtin.file:
+    path: /etc/ssh/ssh_host_*
+    state: absent
+...
+
