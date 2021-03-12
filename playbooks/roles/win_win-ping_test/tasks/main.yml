@@ -1,0 +1,16 @@
+---
+- debug:
+    msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
+
+# Test connectivity to a windows host
+# ansible winserver -m ansible.windows.win_ping
+
+- name: Example from an Ansible Playbook
+  ansible.windows.win_ping:
+
+#- name: Induce an exception to see what happens
+#  ansible.windows.win_ping:
+#    data: crash
+
+
+# ... add dots once tested
