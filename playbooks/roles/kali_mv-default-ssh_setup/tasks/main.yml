@@ -1,0 +1,94 @@
+---
+#- debug:
+#    msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
+
+
+#- name: Create a directory if it does not exist
+#  become: true
+#  ansible.builtin.file:
+#    path: /etc/ssh/default_keys 
+#    state: directory
+#    mode: '0755'
+
+#- name: state of default_keys
+#  stat: path=/etc/ssh/default_keys 
+#  register: default_keys_stat
+#- name: Move default keys to /etc/ssh/default_keys
+#  command: mv /etc/ssh/ssh_config  /etc/ssh/default_keys 
+#  when: default_keys_stat.stat.exists
+
+- name: Move default keys to /etc/ssh/default_keys
+  become: true
+  command: mv /etc/ssh/ssh_host_rsa_key  /etc/ssh/default_keys
+
+#- name: Remove default keys
+#  file: path=/etc/ssh/ssh_host state=absent
+
+#- name: Copy ssh_host* to default_keys #this coping local to remote?
+#  become: true
+#  ansible.builtin.copy:
+#    src: /etc/ssh/ssh_host_*           #ssh_host_rsa_key.pub ssh_host_rsa_key
+#    dest: /etc/ssh/default_keys               
+
+#- name: Move  ssh_host* to default_keys
+#  command: cp -r /etc/ssh/ssh_host_* /etc/ssh/default_keys  
+
+
+- name: Remove file (delete file)
+  become: true
+  ansible.builtin.file:
+    path: /etc/ssh/ssh_host_*
+    state: absent
+
+#- name: generate new ssh key
+#  become: true
+#  ansible.builtin.shell: dpkg-reconfigure openssh-server
+
+
+
+#- name: mk directory /old_keys
+ #   ansible.builtin.shell: mkdir /etc/ssh/old_keys
+
+#- name: copy file between locations on the remote host
+ # copy:
+ #   src: /etc/ssh/ssh_host_*
+ #   remote_src: true
+ #   dest: /etc/ssh/old_keys
+
+#- name: copy file between locations on the remote host
+#  copy:
+#    src: $HOME/test_file
+#    remote_src: true
+#    dest: $HOME/test_file2
+
+#- name: copy default keys
+ # become: true
+#  ansible.builtin.shell: mv /etc/ssh/ssh_host_* /etc/ssh/old_keys/
+
+
+# ... add dots once tested
+
+#https://www.decodingdevops.com/ansible-create-directory-if-not-exists/
+#---
+#- hosts: localhost
+#gather_facts: no
+
+#tasks:
+#- name: Ansible check directory.
+#  stat:
+#    path: /etc/ssh/old_keys #/project/devops/jboss
+#  register: my_folder
+
+#- name: "echo if directory already existed"
+#  debug:
+#    msg: "the old_keys directory is already existed"
+#  when: my_folder.stat.exists
+
+#- name: "Ansible Create directory if not exists"
+#  file:
+#    path: /etc/ssh/old_keys #/project/devops/jboss
+#  state: directory
+#  mode: 0755
+#  group: root
+#  owner: root
+#  when: my_folder.stat.exists == false
