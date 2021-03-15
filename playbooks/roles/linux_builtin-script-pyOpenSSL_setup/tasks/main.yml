@@ -4,7 +4,7 @@
 
 - name: Run a script using an executable in a system path
   become: true
-  ansible.builtin.script: /some/local/script.py
+  ansible.builtin.script: pip3 install pyOpenSSL
   args:
     executable: python3
 
