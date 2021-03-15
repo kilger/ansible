@@ -1,0 +1,26 @@
+---
+- debug:
+    msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
+
+- name: Install the latest version of 
+  dnf:
+    name:
+      - epel-release
+      - dnf-plugins-core
+      - https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+      - config-manager --set-enabled PowerTools
+      -  git python3-pip curl ansible gcc nodejs gcc-c++  gettext lvm2 device-mapper-persistent-data pwgen bzip2
+    state: latest
+...
+
+
+
+
+
+#sudo dnf -y install epel-release
+#sudo dnf -y install dnf-plugins-core
+#sudo dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+
+#sudo dnf config-manager --set-enabled PowerTools
+#sudo dnf install -y git python3-pip curl ansible gcc nodejs gcc-c++  gettext lvm2 device-mapper-persistent-data pwgen bzip2
+# ... add dots once tested
