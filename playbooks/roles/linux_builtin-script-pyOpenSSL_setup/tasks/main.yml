@@ -1,0 +1,11 @@
+---
+- debug:
+    msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
+
+- name: Run a script using an executable in a system path
+  become: true
+  ansible.builtin.script: /some/local/script.py
+  args:
+    executable: python3
+
+# ... add dots once tested
