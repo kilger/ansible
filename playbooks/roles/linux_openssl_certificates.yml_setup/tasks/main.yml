@@ -1,0 +1,19 @@
+---
+- debug:
+    msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
+
+- hosts: localhost
+  vars:
+    - server_hostname: computingforgeeks.com
+    - key_size: 4096
+    - passphrase: # Set if you want passphrase
+    - key_type: DSA # Others include DSA, ECC, Ed25519, Ed448, X25519, X448
+  tasks:
+    - name: Generate an OpenSSL private key
+      openssl_privatekey:
+        path: "./certificates/{{ server_hostname }}_privkey.pem"
+        size: "{{ key_size }}"
+        type: "{{ key_type }}"
+        backup: yes
+
+# ... add dots once tested
