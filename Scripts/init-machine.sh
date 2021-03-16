@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env bash #https://raw.githubusercontent.com/calebstewart/init-machine/master/init-machine.sh
 
 GREEN=`tput setaf 2`
 RED=`tput setaf 1`
