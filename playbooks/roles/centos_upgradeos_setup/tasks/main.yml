@@ -1,0 +1,18 @@
+---
+#- debug:
+#    msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
+
+- name: Upgrade Systems
+  hosts: all
+  become: true
+  gather_facts: true
+  tasks:
+    - name: Upgrade CentOS
+      package:
+      name: "*"
+      state: latest
+    when: >
+      ansible_distribution == "CentOS" and
+      ansible_distribution_version != "8.2"
+...
+# ... add dots once tested
