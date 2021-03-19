@@ -1,0 +1,22 @@
+---
+- debug:
+    msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
+
+#!/bin/sh
+##/usr/local/bin/fw_status script
+#displays all active rules and chains
+
+#define variables
+ipt="/sbin/iptables"
+
+echo "These are the currently active rules, chains, and packet and
+bytecounts:"
+
+$ipt -t filter -L -v --line-numbers
+$ipt -t nat -L -v --line-numbers
+$ipt -t mangle -L -v --line-numbers
+
+# https://sourcedaddy.com/networking/displaying-status-firewall.html
+
+
+# ... add dots once tested
