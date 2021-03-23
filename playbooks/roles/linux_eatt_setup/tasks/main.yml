@@ -1,0 +1,190 @@
+---
+- debug:
+    msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
+
+#!/bin/bash
+# Made by @sudoutopia
+# All credit goes to PayloadAllTheThings and its amazing contributors! https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Linux%20-%20Privilege%20Escalation.md
+# https://book.hacktricks.xyz/
+# https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS
+# https://github.com/rebootuser/LinEnum
+# This script is more of a collection of quick-wins and things that I am more interested in during CTFs, boot2root machines and more.
+# Todo (or never):
+## Docker exposed .socket
+## Check if we're a docker host
+## Maybe more password looting
+
+# Headers
+
+echo -e "\t\t\t _____    _  _____ _____ "
+echo -e "\t\t\t| ____|  / \|_   _|_   _|"
+echo -e "\t\t\t|  _|   / _ \ | |   | |  "
+echo -e "\t\t\t| |___ / ___ \| |   | |  "
+echo -e "\t\t\t|_____/_/   \_\_|   |_|  "
+echo -e "\t\t\tScripted by @sudoutopia"
+echo -e "\t\tAll credits go to the contributers @ PayloadAllthethings! :)"
+echo -e "\n"
+
+# COLORS (for pretty output)
+BLUE="\u001b[34m"
+RESET="\033[0m"
+
+
+# Enumerate kernel versions and OS version
+echo -e "$BLUE[+] Enumerate kernel and OS version [+]$RESET"
+cat /etc/os*
+uname -a
+
+# Enumerat network interfaces
+
+echo -e "\n$BLUE[+] Network Interfaces [+]$RESET\n"
+ifconfig
+
+# Check if user is inside a docker container
+echo -e "\n$BLUE[+] Are we inside a docker container? [+]$RESET\n"
+cat /proc/1/cgroup 
+
+# Enumerate local ports running
+
+echo -e "\n$BLUE[+] Ports listening on the system [+]$RESET\n"
+netstat -tulpn
+
+# Check filesystem for passwords
+echo -e "\n$BLUE[+] Looting For Passwords [+]$RESET\n"
+grep --color=auto -rnw '/etc' -ie "PASSWORD" --color=always 2> /dev/null | grep -v "/proc" | grep -v "/sys"
+grep --color=auto -rnw '/var' -ie "PASSWORD" --color=always 2> /dev/null | grep -v "/proc" | grep -v "/sys"
+grep --color=auto -rnw '/opt' -ie "PASSWORD" --color=always 2> /dev/null | grep -v "/proc" | grep -v "/sys"
+grep --color=auto -rnw '/home' -ie "PASSWORD" --color=always 2> /dev/null | grep -v "/proc" | grep -v "/sys"
+
+# Check processes
+
+echo -e "\n$BLUE[+] Processes [+]$RESET\n"
+ps aux
+
+# Procecesed owned by root
+
+echo -e "\n$BLUE[+] Proccesses owned by root$RESET\n"
+
+ps aux | grep "^root"
+
+# Users on the system
+
+echo -e "\n$BLUE[+] Users on the system (with a shell)[+]$RESET\n"
+cat /etc/passwd | grep -i /bin/bash 
+
+# Check for passwords in memory and last edited file
+
+echo -e "\n$BLUE[+] Check for passwords in memory (/dev/mem)$RESET\n"
+strings /dev/mem -n10 | grep -i PASS
+
+echo -e "$BLUE[+] Files edited in the last 10 mins [+]$RESET\n"
+find / -mmin -10 2>/dev/null | grep -Ev "^/proc"
+
+
+# Loot for potential sensitive files
+# Passwords in files
+# SSH keys
+# and more
+
+echo -e "\n$BLUE[+] Potentially Sensitive Files [+]$RESET\n"
+locate password
+
+echo -e "\n$BLUE[+] Exposed SSH keys [+]$RESET\n"
+
+find / -name authorized_keys 2> /dev/null
+find / -name id_rsa 2> /dev/null
+
+
+# Check for cron job permissions
+
+echo -e "\n$BLUE[+] Permissions for cron jobs files [+]$RESET\n"
+CJ_DIRS=(/etc/init.d /var/spool/cron  /etc/cron* /etc/crontab /etc/cron.allow /etc/cron.d /etc/cron.deny /etc/cron.daily /etc/cron.hourly /etc/cron.monthly /etc/cron.weekly /etc/sudoers /etc/exports /etc/anacrontab /var/spool/cron /var/spool/cron/crontabs/root)
+
+for directories in "${CJ_DIRS[@]}"
+do
+		ls -al $directories
+done
+
+
+# Check for SGID & SUID binaries
+
+echo -e "\n$BLUE[+] SUID [+]$RESET\n"
+find / -perm -u=s  -exec ls -la {} \; 2>/dev/null 
+
+echo -e "\n$BLUE[+] SGID [+]$RESET\n"
+find / -perm -2000  -exec ls -la {} \; 2>/dev/null
+
+# Check for linux special capabilities
+echo -e "\n$BLUE[+] Capabilities [+]$RESET\n"
+getcap -r / 2>/dev/null
+
+
+# Checking if you can do anything interesting with sudo
+echo -e "\n$BLUE[+] Sudo (mis)configurations [+]$RESET\n"
+sudo -l
+
+echo -e "\n$BLUE[+] LD_PRELOAD? [+]$RESET\n"
+cat /etc/sudoers
+
+# world-writable files and folders
+
+echo -e "\n$BLUE[+] World-writable files [+]$RESET\n"
+
+find / -writable ! -user `whoami` -type f ! -path "/proc/*" ! -path "/sys/*" -exec ls -al {} \; 2>/dev/null
+
+# Check if you can write ontop of /etc/shadow or /etc/passwd or /etc/sudoers
+echo -e "\n$BLUE[+] Write permission on /etc/passwd or /etc/shadow? [+]$RESET\n"
+
+if [[ -w "/etc/passwd" ]]
+then
+		echo "YES! You have write permissions on /etc/passwd"
+else
+		echo "Can't write to passwd file!"
+fi
+
+if [[ -w "/etc/shadow" ]]
+then
+		echo "YES! You have write permissions on /etc/shadow"
+else
+		echo "Can't write to shadow file!"
+fi
+
+if [[ -w "/etc/sudoers" ]]
+then
+		echo "YES! You have write permissions on /etc/sudoers"
+else
+		echo "Can't write to sudoers file!"
+fi
+
+## check for dangerous sockets that user has access to 
+
+# Check if NFS root squashing is possible
+
+#echo -e "\n$BLUE[+] NFS root squashing? [+]$RESET\n"
+
+#cat /etc/exports | grep no_root_squash)
+
+#if [[ "$?" -eq "0" ]]
+#then
+#		echo "YES! You can do NFS Root Squashing!"
+#else
+#		echo "Can't do NFS Root Squashing!"
+#fi
+
+# Dangerous groups
+
+echo -e "\n$BLUE[+] Are you part of any dangerous groups? [+]$RESET\n"
+DANGEROUS_GROUPS=( lxc lxd docker )
+for dangerous in "${DANGEROUS_GROUPS[@]}";
+do
+		CHECK_IF_MEMBER_OF_DANGEROUS_GROUP=$(groups | grep $dangerous)
+		if [[ "$?" -eq "0"  ]]
+		then
+				echo "User is part of $dangerous group!"
+		else
+				echo "User is NOT part of $dangerous group!"
+		fi
+done
+
+
+echo "[+] Fin [+]"
