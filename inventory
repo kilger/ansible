@@ -1,71 +1,20 @@
 [local]
 localhost ansible_connection=local
-#127.0.0.1 ansible_connection=local
-
-#[cisco_ios]
-#192.168.86.100 R1
-
-[linux]
-#CentOSSetup.lab.local
-fedoraw32
-kali-00
-puppet02
-rh8-00
-us-01
-us-02
-#awx01
-#syslog-ng
-#ubuntuserver
 
 [centos]
-#CentOSSetup.lab.local
 puppet02
-#awx01
-#syslog-ng
-
-[debian]
-fedoraw32
-kali-00
-ud-00
-ud-01
-us-01
-us-02
-#ubuntuserver
 
 [kali]
 kali-00
 
-[web_servers]
-us-01
-rh8-00
+[windows]
+win10e-00
 
-#[linux:vars]
-#become=true
+[windows:vars]
+ansible_connction=wsmman #winrm
+ansible_user=brian
+ansible-password=P@ssw0rd
+ansible_port=5985
+ansible_winrm_scheme=http
+ansible_winrm_server_cert_validation=ignore
 
-
-#[windows]
-#DESKTOP-VDGCPNL
-#fs04
-#fs05
-#s1601
-#win10-04
-#dc02
-#brix
-#m93
-#m900
-#tablet
-
-#[win_clients]
-#DESKTOP-VDGCPNL
-#brix
-#couplescave
-#win10-04
-#tablet
-#m93
-#m900
-
-#[win_servers]
-#fs04
-#fs05
-#s1601
-#dc02m93

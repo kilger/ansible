@@ -1,21 +1,21 @@
 # It should live in /ansible
 
 [local]
-localhost ansible_connection=local
+#localhost ansible_connection=local
 
-[linux]
-CentOSSetup.lab.local
-fedoraw32
-puppet02
-us01
-us02
+#[linux]
+#CentOSSetup.lab.local
+#fedoraw32
+#puppet02
+#us01
+#us02
 #awx01
 #syslog-ng
 #ubuntuserver
 
-[centos]
-CentOSSetup.lab.local
-puppet02
+#[centos]
+#CentOSSetup.lab.local
+#puppet02
 #awx01
 #syslog-ng
 
@@ -34,6 +34,7 @@ DESKTOP-VDGCPNL
 fs04
 fs05
 s1601
+#win10e-00
 #win10-04
 #dc02
 #brix
@@ -60,7 +61,7 @@ s1601
 
 [windows:vars]
 ansible_connection=winrm
-ansible_user=administrator
+ansible_user=brian
 ansible_password=P@ssw0rd
 ansible_port=5985
 ansible_winrm_scheme=http
