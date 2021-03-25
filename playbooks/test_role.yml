@@ -3,8 +3,9 @@
   hosts: puppet02
   become: true
   roles:
+    - kali_tools_setup
 #    - test_role
-    - centos_repo-puppet_setup
+#    - centos_repo-puppet_setup
 #    - centos_linus-add-wheel_setup
 ...
 
