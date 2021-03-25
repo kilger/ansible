@@ -15,6 +15,10 @@
     - nmap 
     - beef-xss 
     - nikto
-
+    - masscan
+    - seclists
+    - sshuttle
+    - open-iscsi
+    - gobuster
 
 # ... add dots once tested\
