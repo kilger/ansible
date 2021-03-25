@@ -1,0 +1,20 @@
+---
+- debug:
+    msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
+
+- name: Ansible file permission example 
+  remote_user: ubuntu 
+  tasks: 
+   - name: Create the app.conf configuration file and assign permissions 
+     template:   
+        src: "~/ansible_template_demo/{{item}}.j2"    # Iterates over 2 templates   
+        dest: "/etc/{{item}}"
+        owner: "{{ ansible_user }}"   
+        group: "{{ ansible_user }}"   
+        mode:  0644 ## OR  mode: u=rw, g=w,o=r        
+     become: true     
+     loop: # Tell the template module to find each of these templates and process                                              
+      - app1.conf 
+      - app2.conf 
+
+# ... add dots once tested
