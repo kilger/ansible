@@ -1,0 +1,18 @@
+---
+- debug:
+    msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
+
+
+ name: Ansible file permission example
+  remote_user: ubuntu
+  tasks:
+    - name: Create the app.conf configuration file and assign permissions
+      template:
+          src: "~/ansible_template_demo/app.conf.j2"
+          dest: "/etc/app.conf"
+	  owner: "{{ ansible_user }}"
+          group: "{{ ansible_user }}"
+          mode:  0644 ## OR  mode: u=rw, g=w,o=r       
+      become: true
+
+# ... add dots once tested
