@@ -1,6 +1,6 @@
 ---
 - name: Testing of Roles
-  hosts: puppet02
+  hosts: all
   become: true
   roles:
     - kali_tools_setup
