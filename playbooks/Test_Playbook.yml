@@ -12,7 +12,7 @@
 
   roles:
  #   - kali_apt-grant root_setup.yml
- #
+     - kali_tools_setup
  #   - test_role.yml
  #   - kali_mv-default-ssh_setup
 ... 
