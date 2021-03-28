@@ -5,10 +5,10 @@
 - name: Install Your Favorite Hacking Tools
   apt:
     pkg:
-    - foo
-    - maltego 
-    - metasploit-framework 
-    - burpsuite 
+    #- foo
+    #- maltego 
+    #- metasploit-framework 
+    #- burpsuite 
     - wireshark 
     - aircrack-ng 
     - hydra 

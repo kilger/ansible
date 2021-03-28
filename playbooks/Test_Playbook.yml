@@ -14,6 +14,6 @@
  #   - kali_apt-grant root_setup.yml
  #
  #   - test_role.yml
-    - kali_mv-default-ssh_setup
+ #   - kali_mv-default-ssh_setup
 ... 
 #end
