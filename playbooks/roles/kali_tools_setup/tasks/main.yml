@@ -3,6 +3,7 @@
     msg: "Connecting to {{ ansible_nodename }} which is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
 
 - name: Install Your Favorite Hacking Tools
+  become: true
   apt:
     pkg:
     #- foo
